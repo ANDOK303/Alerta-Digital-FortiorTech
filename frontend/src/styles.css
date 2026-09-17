@@ -1,1 +1,32 @@
-/* You can add global styles to this file, and also import other style files */
+:root {
+  --azul-marino: #1E3A8A; /* Color Principal */
+  --azul-tecnologico: #3B82F6; /* Color Secundario */
+  --verde-esmeralda: #22C55E; /* Estabilidad / Éxito[cite: 1] */
+  --rojo-alerta: #EF4444; /* Urgencia[cite: 1] */
+  --fondo-blanco: #F9FAFB; /* Fondo General[cite: 1] */
+  --gris-oscuro: #111827; /* Textos[cite: 1] */
+}
+
+body {
+  background-color: var(--fondo-blanco);
+  color: var(--gris-oscuro);
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+/* Estilos de botones reutilizables */
+.btn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  width: 100%;
+  margin-bottom: 10px;
+}
+.btn-primary { background-color: var(--azul-marino); }
+.btn-secondary { background-color: var(--azul-tecnologico); }
+.btn-success { background-color: var(--verde-esmeralda); }
+.btn-danger { background-color: var(--rojo-alerta); }

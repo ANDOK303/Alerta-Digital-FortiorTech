@@ -1,0 +1,17 @@
+<div class="login-container" style="max-width: 400px; margin: 50px auto; text-align: center; background: white; padding: 20px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+  <img src="assets/logo.png" alt="Logo Alerta Digital" style="width: 80px; margin-bottom: 20px;">
+  <h2 style="color: var(--azul-marino);">ACCESO AL SISTEMA</h2>
+  <p style="font-size: 12px;">INICIE SESIÓN EN SU CUENTA CORPORATIVA</p>
+
+  <form style="display: flex; flex-direction: column; gap: 15px; margin-top: 20px;">
+    <input type="text" placeholder="Nombre de Usuario o Correo" style="padding: 10px; border: 1px solid #ccc; border-radius: 4px;">
+    <input type="password" placeholder="Contraseña" style="padding: 10px; border: 1px solid #ccc; border-radius: 4px;">
+
+    <button type="submit" class="btn btn-primary" (click)="iniciarSesion()">INICIAR SESIÓN</button>
+  </form>
+
+  <div style="margin-top: 15px; font-size: 12px;">
+    <a style="color: var(--azul-tecnologico); cursor: pointer;">Recuperar Contraseña</a> |
+    <a routerLink="/registro" style="color: var(--azul-tecnologico); cursor: pointer; text-decoration: underline;">Crear Cuenta</a>
+</div>
+</div>

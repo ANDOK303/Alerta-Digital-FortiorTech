@@ -1,0 +1,40 @@
+<div class="registro-container" style="max-width: 450px; margin: 40px auto; text-align: center; background: white; padding: 25px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+
+  <h2 style="color: var(--azul-marino); font-size: 1.2rem; margin-bottom: 5px;">REGISTRO DE USUARIO CORPORATIVO</h2>
+
+  <form style="display: flex; flex-direction: column; gap: 12px; margin-top: 20px; text-align: left;">
+
+    <input type="text" placeholder="Nombre Completo" style="padding: 10px; border: 1px solid #ccc; border-radius: 4px; width: 100%; box-sizing: border-box;">
+
+    <input type="email" placeholder="Correo Electrónico Corporativo" style="padding: 10px; border: 1px solid #ccc; border-radius: 4px; width: 100%; box-sizing: border-box;">
+
+    <input type="text" placeholder="Teléfono (Opcional)" style="padding: 10px; border: 1px solid #ccc; border-radius: 4px; width: 100%; box-sizing: border-box;">
+
+    <input type="password" placeholder="Nueva Contraseña" style="padding: 10px; border: 1px solid #ccc; border-radius: 4px; width: 100%; box-sizing: border-box;">
+
+    <input type="password" placeholder="Confirmar Contraseña" style="padding: 10px; border: 1px solid #ccc; border-radius: 4px; width: 100%; box-sizing: border-box;">
+
+    <select style="padding: 10px; border: 1px solid #ccc; border-radius: 4px; width: 100%; box-sizing: border-box; color: var(--gris-oscuro);">
+      <option value="">Rol (Estudiante, Padre, Docente)</option>
+      <option value="estudiante">Estudiante</option>
+      <option value="padre">Padre de Familia</option>
+      <option value="docente">Docente</option>
+    </select>
+
+    <div style="display: flex; align-items: center; gap: 8px; font-size: 12px; margin-top: 5px;">
+      <input type="checkbox" id="terminos">
+      <label for="terminos" style="color: var(--gris-oscuro);">Acepto Términos y Condiciones</label>
+    </div>
+
+    <button type="button" class="btn btn-primary" style="margin-top: 10px;" (click)="crearCuenta()">CREAR CUENTA</button>
+  </form>
+
+  <div style="margin-top: 15px; font-size: 12px;">
+    ¿Ya tienes cuenta? <a routerLink="/login" style="color: var(--azul-tecnologico); text-decoration: none; font-weight: bold;">Iniciar sesión</a>
+  </div>
+
+  <!-- Pie de tarjeta simulando el logo -->
+  <div style="margin-top: 20px; border-top: 1px solid #eee; padding-top: 15px; font-weight: bold; color: var(--azul-marino); display: flex; align-items: center; justify-content: center; gap: 5px;">
+     🛡️ AlertaDigital
+  </div>
+</div>
