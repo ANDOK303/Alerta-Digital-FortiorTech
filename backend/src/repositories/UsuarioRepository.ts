@@ -12,4 +12,15 @@ export class UsuarioRepository {
   buscarPorCorreo(correo: string): Usuario | undefined {
     return usuarios.find(u => u.correo_electronico === correo);
   }
+
+  buscarPorNombreUsuario(nombre: string): Usuario | undefined {
+    return usuarios.find(u => u.nombre_usuario === nombre);
+  }
+
+  crear(usuario: Omit<Usuario, 'id_usuario'>): Usuario {
+    const nuevoId = usuarios.length > 0 ? Math.max(...usuarios.map(u => u.id_usuario)) + 1 : 1;
+    const nuevoUsuario: Usuario = { id_usuario: nuevoId, ...usuario };
+    usuarios.push(nuevoUsuario);
+    return nuevoUsuario;
+  }
 }
