@@ -1,32 +1,64 @@
 :root {
-  --azul-marino: #1E3A8A; /* Color Principal */
-  --azul-tecnologico: #3B82F6; /* Color Secundario */
-  --verde-esmeralda: #22C55E; /* Estabilidad / Éxito[cite: 1] */
-  --rojo-alerta: #EF4444; /* Urgencia[cite: 1] */
-  --fondo-blanco: #F9FAFB; /* Fondo General[cite: 1] */
-  --gris-oscuro: #111827; /* Textos[cite: 1] */
+  --azul-marino: #1E3A8A;
+  --azul-tecnologico: #3B82F6;
+  --verde-esmeralda: #22C55E;
+  --rojo-alerta: #EF4444;
+  --fondo-blanco: #F9FAFB;
+  --gris-oscuro: #111827;
+
+  --gris-borde: #E5E7EB;
+  --gris-texto-suave: #6B7280;
+  --radio-sm: 8px;
+  --radio-md: 12px;
+  --radio-lg: 20px;
+  --sombra-sm: 0 1px 2px rgba(17, 24, 39, 0.06), 0 1px 3px rgba(17, 24, 39, 0.08);
+  --sombra-md: 0 4px 6px rgba(17, 24, 39, 0.05), 0 10px 15px rgba(17, 24, 39, 0.08);
+  --sombra-lg: 0 10px 15px rgba(17, 24, 39, 0.08), 0 20px 40px rgba(30, 58, 138, 0.1);
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  height: 100%;
 }
 
 body {
   background-color: var(--fondo-blanco);
   color: var(--gris-oscuro);
-  font-family: Arial, sans-serif;
+  font-family: -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
   margin: 0;
   padding: 0;
+  -webkit-font-smoothing: antialiased;
 }
 
-/* Estilos de botones reutilizables */
+h1, h2, h3 { margin: 0; }
+
+/* ---------- Botones reutilizables ---------- */
 .btn {
-  padding: 10px 20px;
+  padding: 12px 20px;
   border: none;
-  border-radius: 5px;
-  color: white;
-  font-weight: bold;
+  border-radius: var(--radio-sm);
+  color: #FFFFFF;
+  font-weight: 600;
+  font-size: 14px;
   cursor: pointer;
   width: 100%;
   margin-bottom: 10px;
+  transition: filter 0.15s ease, transform 0.1s ease;
 }
-.btn-primary { background-color: var(--azul-marino); }
+
+.btn-primary   { background-color: var(--azul-marino); }
 .btn-secondary { background-color: var(--azul-tecnologico); }
-.btn-success { background-color: var(--verde-esmeralda); }
-.btn-danger { background-color: var(--rojo-alerta); }
+.btn-success   { background-color: var(--verde-esmeralda); }
+.btn-danger    { background-color: var(--rojo-alerta); }
+
+.btn:hover   { filter: brightness(1.08); }
+.btn:active  { filter: brightness(0.94); transform: scale(0.99); }
+
+/* ---------- Tarjeta base reutilizable ---------- */
+.card {
+  background: #FFFFFF;
+  border-radius: var(--radio-md);
+  border: 1px solid var(--gris-borde);
+  box-shadow: var(--sombra-sm);
+}

@@ -1,0 +1,207 @@
+.registro-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #EEF1F5;
+  padding: 24px;
+}
+
+.registro-panel {
+  position: relative;
+  max-width: 580px;
+  width: 100%;
+  background: linear-gradient(160deg, var(--azul-marino) 0%, #101d4d 100%);
+  border-radius: var(--radio-lg);
+  box-shadow: var(--sombra-lg), 0 0 0 1px rgba(255, 255, 255, 0.06) inset;
+  padding: 44px 46px;
+  overflow: hidden;
+  animation: registro-aparecer 0.4s ease;
+}
+
+@keyframes registro-aparecer {
+  from { opacity: 0; transform: translateY(14px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Manchas decorativas de fondo */
+.registro-panel::before,
+.registro-panel::after {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.registro-panel::before {
+  width: 260px;
+  height: 260px;
+  background: radial-gradient(circle, rgba(59, 130, 246, 0.35), transparent 70%);
+  top: -100px;
+  right: -80px;
+}
+
+.registro-panel::after {
+  width: 220px;
+  height: 220px;
+  background: radial-gradient(circle, rgba(34, 197, 94, 0.18), transparent 70%);
+  bottom: -90px;
+  left: -70px;
+}
+
+/* Contenido por encima de las manchas */
+.registro-header,
+.registro-form,
+.registro-login-link {
+  position: relative;
+  z-index: 1;
+}
+
+.registro-header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.registro-header-icon {
+  width: 56px;
+  height: 56px;
+  margin: 0 auto 14px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--azul-tecnologico), #60a5fa);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 26px;
+  box-shadow: 0 8px 20px rgba(59, 130, 246, 0.4);
+}
+
+.registro-title {
+  font-size: 1.3rem;
+  font-weight: 800;
+  color: #FFFFFF;
+  letter-spacing: 0.3px;
+}
+
+.registro-subtitle {
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.7);
+  margin: 6px 0 0 0;
+}
+
+.registro-form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.registro-field-full {
+  grid-column: 1 / -1;
+}
+
+.registro-field label {
+  display: block;
+  font-size: 11.5px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  color: rgba(255, 255, 255, 0.65);
+  margin-bottom: 7px;
+}
+
+.registro-field input,
+.registro-field select {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 10px;
+  font-size: 14px;
+  color: var(--gris-oscuro);
+  background-color: rgba(255, 255, 255, 0.96);
+  transition: border-color 0.15s ease, box-shadow 0.15s ease, transform 0.1s ease;
+  appearance: none;
+}
+
+.registro-field select {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='9' viewBox='0 0 14 9'%3E%3Cpath fill='%236B7280' d='M1 1l6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  padding-right: 36px;
+}
+
+.registro-field input::placeholder {
+  color: #9CA3AF;
+}
+
+.registro-field input:focus,
+.registro-field select:focus {
+  outline: none;
+  border-color: var(--azul-tecnologico);
+  box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.35);
+  transform: translateY(-1px);
+}
+
+.registro-checkbox {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 12.5px;
+  color: rgba(255, 255, 255, 0.8);
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 12px 14px;
+  border-radius: 10px;
+}
+
+.registro-checkbox input[type="checkbox"] {
+  accent-color: var(--verde-esmeralda);
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+}
+
+.registro-checkbox a {
+  color: #93C5FD;
+  text-decoration: none;
+  font-weight: 700;
+}
+
+.registro-checkbox a:hover {
+  text-decoration: underline;
+}
+
+.registro-field-full.btn {
+  margin-top: 4px;
+  box-shadow: 0 8px 20px rgba(30, 58, 138, 0.45);
+}
+
+.registro-field-full.btn:hover {
+  filter: brightness(1.12);
+  transform: translateY(-1px);
+}
+
+.registro-login-link {
+  margin-top: 22px;
+  text-align: center;
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.registro-login-link a {
+  color: #93C5FD;
+  text-decoration: none;
+  font-weight: 700;
+}
+
+.registro-login-link a:hover {
+  text-decoration: underline;
+}
+
+/* ---- Responsive ---- */
+@media (max-width: 560px) {
+  .registro-form {
+    grid-template-columns: 1fr;
+  }
+  .registro-panel {
+    padding: 34px 26px;
+  }
+}

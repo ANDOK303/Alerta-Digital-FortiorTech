@@ -1,46 +1,91 @@
-<!-- Barra superior -->
-<nav style="background-color: var(--azul-marino); color: white; padding: 15px; display: flex; justify-content: space-between;">
-  <div style="font-weight: bold;">AlertaDigital</div>
-  <div>Menú de Usuario</div>
-</nav>
+<div class="home-page">
 
-<div style="padding: 20px; max-width: 1000px; margin: auto;">
-
-  <!-- Estado del sistema[cite: 1] -->
-  <div style="background-color: var(--verde-esmeralda); color: white; padding: 15px; text-align: center; border-radius: 5px; font-weight: bold; font-size: 1.2rem; margin-bottom: 20px;">
-    ESTADO DEL SISTEMA: SEGURO ✓
-  </div>
-
-  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
-
-    <!-- Alertas Pendientes[cite: 1] -->
-    <div style="background: white; border-radius: 5px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
-      <h3 style="background-color: var(--gris-oscuro); color: white; margin: 0; padding: 10px; border-radius: 5px 5px 0 0;">ALERTAS PENDIENTES</h3>
-      <div style="padding: 20px;">
-        <p>⚠️ Alertas Pendientes</p>
-      </div>
+  <!-- Barra lateral -->
+  <aside class="home-sidebar">
+    <div class="home-sidebar-brand">
+      <span class="home-sidebar-icon">🛡️</span>
+      <span>AlertaDigital</span>
     </div>
 
-    <!-- Recursos Rápidos[cite: 1] -->
-    <div>
-      <div style="background: white; border-radius: 5px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); margin-bottom: 20px;">
-        <h3 style="background-color: var(--gris-oscuro); color: white; margin: 0; padding: 10px; border-radius: 5px 5px 0 0;">RECURSOS RÁPIDOS</h3>
-        <div style="padding: 20px;">
-          <button class="btn btn-danger">DENUNCIAR ACOSO</button>
-          <button class="btn btn-secondary">CHAT DE ORIENTACIÓN</button>
-          <button class="btn btn-success">GUÍAS DE SEGURIDAD</button>
+    <ul class="home-sidebar-links">
+      <li><a href="#" class="active"><span>Inicio</span></a></li>
+      <li><a href="#"><span>Alertas</span></a></li>
+      <li><a href="#"><span>Recursos</span></a></li>
+      <li><a href="#"><span>Foro</span></a></li>
+      <li><a href="#"><span>Configuración</span></a></li>
+    </ul>
+
+    <div class="home-sidebar-user">
+      <div class="home-sidebar-avatar">U</div>
+      <div class="home-sidebar-user-info">
+        <strong>Usuario</strong>
+        <span>Ver perfil</span>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Contenido principal -->
+  <div class="home-main">
+
+    <div class="home-content">
+
+      <!-- Estado del sistema -->
+      <div class="home-status">
+        <span class="home-status-dot"></span>
+        <div>
+          <strong>Estado del sistema: Seguro</strong>
+          <p>Todos los servicios funcionan con normalidad.</p>
         </div>
       </div>
 
-      <!-- Resumen de Actividad / Foro[cite: 1] -->
-      <div style="background: white; border-radius: 5px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
-        <h3 style="background-color: var(--gris-oscuro); color: white; margin: 0; padding: 10px; border-radius: 5px 5px 0 0;">RESUMEN DE ACTIVIDAD</h3>
-        <ul style="list-style: none; padding: 15px; margin: 0; font-size: 14px;">
-          <li style="border-bottom: 1px solid #eee; padding-bottom: 10px; margin-bottom: 10px;">Foro: Temas de seguridad...</li>
-          <li>Foro: Lecturas gratuitas...</li>
-        </ul>
+      <div class="home-grid">
+
+        <!-- Alertas Pendientes -->
+        <div class="home-card">
+          <div class="home-card-header">
+            <h3>Alertas Pendientes</h3>
+          </div>
+          <div class="home-card-body">
+            <div class="home-empty">
+              <span class="home-empty-icon"></span>
+              <p>No hay alertas pendientes por revisar.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="home-column">
+          <!-- Recursos Rápidos -->
+          <div class="home-card">
+            <div class="home-card-header">
+              <h3>Recursos Rápidos</h3>
+            </div>
+            <div class="home-card-body home-actions">
+              <button class="btn btn-danger">Denunciar acoso</button>
+              <button class="btn btn-secondary">Chat de orientación</button>
+              <button class="btn btn-success">Guías de seguridad</button>
+            </div>
+          </div>
+
+          <!-- Resumen de Actividad -->
+          <div class="home-card">
+            <div class="home-card-header">
+              <h3>Resumen de Actividad</h3>
+            </div>
+            <ul class="home-activity-list">
+              <li>
+                <span class="home-activity-dot"></span>
+                Foro: Temas de seguridad...
+              </li>
+              <li>
+                <span class="home-activity-dot"></span>
+                Foro: Lecturas gratuitas...
+              </li>
+            </ul>
+          </div>
+        </div>
+
       </div>
     </div>
-
   </div>
+
 </div>
