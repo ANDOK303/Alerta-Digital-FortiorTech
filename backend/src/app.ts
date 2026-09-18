@@ -11,8 +11,13 @@ app.use(express.json());
 app.use('/api/auth', authRoutes);
 app.use('/api/home', homeRoutes);
 
-app.get('/', (req, res) => {
-  res.json({ mensaje: 'API Alerta Digital funcionando' });
+app.get('/api/test-db', async (req, res) => {
+  try {
+    const [rows] = await pool.query('SELECT * FROM usuarios');
+    res.json(rows);
+  } catch (error) {
+    res.status(500).json({ error: 'Error al consultar usuarios' });
+  }
 });
 
 app.listen(PORT, async () => {
