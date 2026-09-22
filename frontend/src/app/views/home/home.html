@@ -8,20 +8,24 @@
     </div>
 
     <ul class="home-sidebar-links">
-      <li><a href="#" class="active"><span>Inicio</span></a></li>
-      <li><a href="#"><span>Alertas</span></a></li>
-      <li><a href="#"><span>Recursos</span></a></li>
-      <li><a href="#"><span>Foro</span></a></li>
-      <li><a href="#"><span>Configuración</span></a></li>
+      <li><a routerLink="/home" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><span>Inicio</span></a></li>
+      <li><a routerLink="/denuncias" routerLinkActive="active"><span>Alertas</span></a></li>
+      <li><a routerLink="/recomendaciones" routerLinkActive="active"><span>Recursos</span></a></li>
+      <li><a routerLink="/hilos-foro" routerLinkActive="active"><span>Foro</span></a></li>
+      <li><a routerLink="/usuarios" routerLinkActive="active"><span>Configuración</span></a></li>
     </ul>
 
-    <div class="home-sidebar-user">
+    <a routerLink="/usuarios" class="home-sidebar-user">
       <div class="home-sidebar-avatar">U</div>
       <div class="home-sidebar-user-info">
         <strong>Usuario</strong>
         <span>Ver perfil</span>
       </div>
-    </div>
+    </a>
+
+    <button type="button" class="home-sidebar-logout" (click)="cerrarSesion()">
+      Cerrar sesión
+    </button>
   </aside>
 
   <!-- Contenido principal -->
@@ -60,9 +64,9 @@
               <h3>Recursos Rápidos</h3>
             </div>
             <div class="home-card-body home-actions">
-              <button class="btn btn-danger">Denunciar acoso</button>
-              <button class="btn btn-secondary">Chat de orientación</button>
-              <button class="btn btn-success">Guías de seguridad</button>
+              <button class="btn btn-danger" (click)="denunciarAcoso()">Denunciar acoso</button>
+              <button class="btn btn-secondary" (click)="chatOrientacion()">Chat de orientación</button>
+              <button class="btn btn-success" (click)="guiasSeguridad()">Guías de seguridad</button>
             </div>
           </div>
 

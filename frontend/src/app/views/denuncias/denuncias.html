@@ -1,50 +1,65 @@
-<div class="contenedor">
-    <h2>Denuncias</h2>
+<div class="contenedor vista-admin">
 
-    <table>
+  <div class="vista-header">
+    <div>
+      <h2>Denuncias</h2>
+      <p class="vista-subtitulo">Gestión y seguimiento de denuncias de ciberacoso</p>
+    </div>
+  </div>
+
+  <div class="card tabla-card">
+    <div class="tabla-wrap">
+      <table class="tabla-datos">
         <thead>
-            <tr>
-                <th>ID</th>
-                <th>Usuario</th>
-                <th>Título</th>
-                <th>Descripción</th>
-                <th>Tipo de ciberacoso</th>
-                <th>Estado</th>
-                <th>Prioridad</th>
-                <th>Fecha de creación</th>
-            </tr>
+          <tr>
+            <th>ID</th>
+            <th>Usuario</th>
+            <th>Título</th>
+            <th>Descripción</th>
+            <th>Tipo de ciberacoso</th>
+            <th>Estado</th>
+            <th>Prioridad</th>
+            <th>Fecha de creación</th>
+          </tr>
         </thead>
         <tbody>
-            <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
+          <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
         </tbody>
-    </table>
+      </table>
+    </div>
+  </div>
 
+  <div class="card form-card">
     <h3>Nueva denuncia</h3>
-    <form>
-        <input type="text" placeholder="Título">
-        <textarea placeholder="Descripción"></textarea>
-        <input type="text" placeholder="Tipo de ciberacoso">
-        <select>
-            <option value="pendiente">Pendiente</option>
-            <option value="en_revision">En revisión</option>
-            <option value="atendida">Atendida</option>
-            <option value="descartada">Descartada</option>
+    <form class="form-vista">
+      <div class="form-grid">
+        <input class="form-field form-field-full" type="text" placeholder="Título">
+        <textarea class="form-field form-field-full" placeholder="Descripción"></textarea>
+        <input class="form-field" type="text" placeholder="Tipo de ciberacoso">
+        <select class="form-field">
+          <option value="pendiente">Pendiente</option>
+          <option value="en_revision">En revisión</option>
+          <option value="atendida">Atendida</option>
+          <option value="descartada">Descartada</option>
         </select>
-        <select>
-            <option value="baja">Baja</option>
-            <option value="media">Media</option>
-            <option value="alta">Alta</option>
-            <option value="urgente">Urgente</option>
+        <select class="form-field">
+          <option value="baja">Baja</option>
+          <option value="media">Media</option>
+          <option value="alta">Alta</option>
+          <option value="urgente">Urgente</option>
         </select>
-        <button type="submit">Guardar</button>
+      </div>
+      <button type="submit" class="btn btn-primary form-submit">Guardar</button>
     </form>
+  </div>
+
 </div>
