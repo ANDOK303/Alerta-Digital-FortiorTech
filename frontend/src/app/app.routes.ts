@@ -8,7 +8,6 @@ import { CalificacionesPlataforma } from './views/calificaciones-plataforma/cali
 
 export const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
-
   { path: 'login', component: Login },
   { path: 'registro', component: Registro },
   { path: 'home', component: Home },
