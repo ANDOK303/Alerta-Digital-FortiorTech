@@ -1,50 +1,108 @@
-<div class="contenedor">
-    <h2>Denuncias</h2>
-
-    <table>
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Usuario</th>
-                <th>Título</th>
-                <th>Descripción</th>
-                <th>Tipo de ciberacoso</th>
-                <th>Estado</th>
-                <th>Prioridad</th>
-                <th>Fecha de creación</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-        </tbody>
-    </table>
-
-    <h3>Nueva denuncia</h3>
-    <form>
-        <input type="text" placeholder="Título">
-        <textarea placeholder="Descripción"></textarea>
-        <input type="text" placeholder="Tipo de ciberacoso">
-        <select>
-            <option value="pendiente">Pendiente</option>
-            <option value="en_revision">En revisión</option>
-            <option value="atendida">Atendida</option>
-            <option value="descartada">Descartada</option>
-        </select>
-        <select>
-            <option value="baja">Baja</option>
-            <option value="media">Media</option>
-            <option value="alta">Alta</option>
-            <option value="urgente">Urgente</option>
-        </select>
-        <button type="submit">Guardar</button>
-    </form>
+<div class="contenedor vista-admin">
+ 
+  <!-- Encabezado -->
+<div class="vista-header">
+<div class="vista-header-titulo">
+<span class="vista-icono">🚨</span>
+<div>
+<h2>Denuncias</h2>
+<p class="vista-subtitulo">Gestión y seguimiento de denuncias de ciberacoso</p>
+</div>
+</div>
+</div>
+ 
+  <!-- Tabla -->
+<div class="card tabla-card">
+<div class="tabla-card-header">
+<h3>Registro de denuncias</h3>
+</div>
+<div class="tabla-wrap">
+<table class="tabla-datos">
+<thead>
+<tr>
+<th>ID</th>
+<th>Usuario</th>
+<th>Título</th>
+<th>Descripción</th>
+<th>Tipo de ciberacoso</th>
+<th *ngIf="esAdmin">Estado</th>
+<th>Prioridad</th>
+<th>Fecha de creación</th>
+</tr>
+</thead>
+<tbody>
+<tr *ngFor="let d of denuncias">
+<td>{{ d.id_denuncia }}</td>
+<td>{{ d.usuario }}</td>
+<td>{{ d.titulo }}</td>
+<td>{{ d.descripcion }}</td>
+<td>{{ d.tipo_ciberacoso }}</td>
+<td *ngIf="esAdmin">{{ d.estado_denuncia }}</td>
+<td>{{ d.nivel_prioridad }}</td>
+<td>{{ d.fecha_creacion | date:'short' }}</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+ 
+  <!-- Formulario -->
+<div class="card form-card">
+<div class="form-card-header">
+<span class="form-card-icono">📝</span>
+<div>
+<h3>Nueva denuncia</h3>
+<p class="form-card-subtitulo">Completa los datos para registrar un nuevo caso</p>
+</div>
+</div>
+ 
+    <form class="form-vista" (ngSubmit)="guardarDenuncia()">
+<div class="form-grid">
+<div class="form-field-wrap form-field-full">
+<label class="form-label">Título</label>
+<input class="form-field" type="text" [(ngModel)]="nuevaDenuncia.titulo" name="titulo"
+                 placeholder="Ej. Acoso repetido en redes sociales">
+</div>
+ 
+        <div class="form-field-wrap form-field-full">
+<label class="form-label">Descripción</label>
+<textarea class="form-field" [(ngModel)]="nuevaDenuncia.descripcion" name="descripcion"
+                     placeholder="Describe la situación con el mayor detalle posible"></textarea>
+</div>
+ 
+        <div class="form-field-wrap">
+<label class="form-label">Tipo de ciberacoso</label>
+<input class="form-field" type="text" [(ngModel)]="nuevaDenuncia.tipo_ciberacoso" name="tipo_ciberacoso"
+                 placeholder="Ej. Suplantación de identidad">
+</div>
+ 
+        <!-- Solo admin ve/edita el estado -->
+<div class="form-field-wrap" *ngIf="esAdmin">
+<label class="form-label">Estado</label>
+<select class="form-field" [(ngModel)]="nuevaDenuncia.estado_denuncia" name="estado_denuncia">
+<option value="pendiente">Pendiente</option>
+<option value="en_revision">En revisión</option>
+<option value="atendida">Atendida</option>
+<option value="descartada">Descartada</option>
+</select>
+</div>
+ 
+        <div class="form-field-wrap">
+<label class="form-label">Prioridad</label>
+<select class="form-field" [(ngModel)]="nuevaDenuncia.nivel_prioridad" name="nivel_prioridad">
+<option value="baja">Baja</option>
+<option value="media">Media</option>
+<option value="alta">Alta</option>
+<option value="urgente">Urgente</option>
+</select>
+</div>
+</div>
+ 
+      <div class="form-footer">
+<button type="button" class="btn btn-secondary form-cancel">Cancelar</button>
+<button type="submit" class="btn btn-primary form-submit">Guardar denuncia</button>
+</div>
+</form>
+</div>
+ 
 </div>

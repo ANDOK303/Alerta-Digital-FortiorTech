@@ -19,13 +19,17 @@
       <li><a style="cursor: pointer;"><span>Configuración</span></a></li>
     </ul>
 
-    <div class="home-sidebar-user">
+    <a routerLink="/usuarios" class="home-sidebar-user">
       <div class="home-sidebar-avatar">U</div>
       <div class="home-sidebar-user-info">
         <strong>Usuario</strong>
         <span>Ver perfil</span>
       </div>
-    </div>
+    </a>
+
+    <button type="button" class="home-sidebar-logout" (click)="cerrarSesion()">
+      Cerrar sesión
+    </button>
   </aside>
 
   <!-- Contenido principal -->
