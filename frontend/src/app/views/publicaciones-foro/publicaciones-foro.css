@@ -1,0 +1,224 @@
+/* ==============================
+   Vista: Publicación en el foro
+   ============================== */
+
+.vista-admin {
+  padding: 32px;
+  max-width: 1180px;
+  margin: 0 auto;
+}
+
+/* Vista angosta: solo tiene un formulario */
+.vista-foro {
+  max-width: 720px;
+}
+
+/* ---- Encabezado ---- */
+.vista-header {
+  margin-bottom: 24px;
+}
+
+.vista-header-titulo {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.vista-icono {
+  width: 48px;
+  height: 48px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  border-radius: var(--radio-md);
+  background: linear-gradient(135deg, var(--azul-marino), #3B5BB5);
+  box-shadow: 0 8px 18px rgba(30, 58, 138, 0.28);
+}
+
+.vista-header h2 {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--gris-oscuro);
+  letter-spacing: -0.2px;
+}
+
+.vista-subtitulo {
+  margin: 3px 0 0 0;
+  font-size: 13.5px;
+  color: var(--gris-texto-suave);
+}
+
+/* ---- Tarjeta de formulario ---- */
+.form-card {
+  padding: 0;
+  overflow: hidden;
+}
+
+.form-card-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 22px 26px;
+  background: linear-gradient(135deg, #F3F6FC, #EEF2FF);
+  border-bottom: 1px solid var(--gris-borde);
+}
+
+.form-card-icono {
+  width: 42px;
+  height: 42px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 19px;
+  border-radius: 10px;
+  background: #FFFFFF;
+  box-shadow: var(--sombra-sm);
+}
+
+.form-card-header h3 {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--gris-oscuro);
+}
+
+.form-card-subtitulo {
+  margin: 2px 0 0 0;
+  font-size: 12.5px;
+  color: var(--gris-texto-suave);
+}
+
+.form-vista {
+  padding: 24px 26px 26px;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 18px 16px;
+  margin-bottom: 22px;
+}
+
+.form-field-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.form-field-full {
+  grid-column: 1 / -1;
+}
+
+.form-label {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--gris-oscuro);
+}
+
+.form-hint {
+  font-size: 12px;
+  color: var(--gris-texto-suave);
+}
+
+/* ---- Campos de texto ---- */
+.form-field {
+  width: 100%;
+  padding: 11px 14px;
+  border: 1px solid var(--gris-borde);
+  border-radius: var(--radio-sm);
+  font-size: 14px;
+  font-family: inherit;
+  color: var(--gris-oscuro);
+  background-color: #FFFFFF;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease, transform 0.1s ease;
+}
+
+textarea.form-field {
+  min-height: 110px;
+  resize: vertical;
+}
+
+.form-field::placeholder {
+  color: #9CA3AF;
+}
+
+.form-field:focus {
+  outline: none;
+  border-color: var(--azul-tecnologico);
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
+  transform: translateY(-1px);
+}
+
+/* ---- Campo de archivo (zona de carga) ---- */
+.form-file {
+  width: 100%;
+  padding: 18px 16px;
+  border: 2px dashed #C7D2FE;
+  border-radius: var(--radio-md);
+  background-color: #F8FAFF;
+  font-size: 13.5px;
+  font-family: inherit;
+  color: var(--gris-texto-suave);
+  cursor: pointer;
+  transition: border-color 0.15s ease, background-color 0.15s ease;
+}
+
+.form-file:hover {
+  border-color: var(--azul-tecnologico);
+  background-color: #EEF2FF;
+}
+
+.form-file:focus {
+  outline: none;
+  border-color: var(--azul-tecnologico);
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
+}
+
+.form-file::file-selector-button {
+  margin-right: 14px;
+  padding: 9px 18px;
+  border: none;
+  border-radius: var(--radio-sm);
+  background: var(--azul-tecnologico);
+  color: #FFFFFF;
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+}
+
+.form-file::file-selector-button:hover {
+  background: var(--azul-marino);
+}
+
+/* ---- Pie del formulario ---- */
+.form-footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  padding-top: 18px;
+  border-top: 1px solid var(--gris-borde);
+}
+
+.form-submit {
+  width: auto;
+  margin-bottom: 0;
+  padding-left: 26px;
+  padding-right: 26px;
+}
+
+/* ---- Responsive ---- */
+@media (max-width: 720px) {
+  .vista-admin {
+    padding: 20px;
+  }
+  .form-footer {
+    flex-direction: column-reverse;
+  }
+  .form-submit {
+    width: 100%;
+  }
+}
