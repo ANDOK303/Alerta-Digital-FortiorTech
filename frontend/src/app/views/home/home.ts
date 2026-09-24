@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
-import { Router, RouterLink } from '@angular/router';
+import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [RouterLink],
+  imports: [RouterLink, RouterLinkActive],
   templateUrl: './home.html',
   styleUrls: ['./home.css']
 })
@@ -14,7 +14,10 @@ export class Home {
 
   constructor(private router: Router) {}
 
-  // Funciones infalibles para navegar por código
+  irADenuncias() {
+    this.router.navigate(['/denuncias']);
+  }
+
   irAPruebas() {
     this.router.navigate(['/pruebas-denuncia']);
   }
