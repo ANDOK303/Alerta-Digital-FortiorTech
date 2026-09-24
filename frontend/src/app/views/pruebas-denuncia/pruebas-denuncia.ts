@@ -10,4 +10,6 @@ export class PruebasDenuncia {
   subirPrueba() {
     console.log('Subiendo evidencia...');
   }
+
+  idDenuncia: string = '12345'; // Ejemplo de ID de denuncia
 }
