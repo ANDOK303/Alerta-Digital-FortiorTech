@@ -21,11 +21,12 @@
       <p class="login-subtitle">Inicie sesión en su cuenta corporativa</p>
 
       <form class="login-form">
-        <label class="login-label">Usuario o correo</label>
-        <input type="text" placeholder="nombre@fortiortech.com">
-
-        <label class="login-label">Contraseña</label>
-        <input type="password" placeholder="••••••••">
+     <label class="login-label">Usuario o correo</label>
+<input type="text" placeholder="nombre@fortiortech.com" [(ngModel)]="correo_electronico" name="correo_electronico">
+ 
+<label class="login-label">Contraseña</label>
+<input type="password" placeholder="••••••••" [(ngModel)]="contrasena" name="contraseña">
+ 
 
         <button type="submit" class="btn btn-primary login-submit" (click)="iniciarSesion()">Iniciar sesión</button>
       </form>

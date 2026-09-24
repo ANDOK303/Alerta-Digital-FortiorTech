@@ -1,37 +1,106 @@
-<div class="contenedor">
-    <h2>Recomendaciones</h2>
+<div class="contenedor vista-admin">
 
-    <table>
+  <!-- Encabezado -->
+  <div class="vista-header">
+    <div class="vista-header-titulo">
+      <span class="vista-icono">💡</span>
+      <div>
+        <h2>Recomendaciones</h2>
+        <p class="vista-subtitulo">Contenido de orientación y guías de seguridad para la comunidad</p>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Tabla -->
+  <div class="card tabla-card">
+    <div class="tabla-card-header">
+      <h3>Contenido publicado</h3>
+    </div>
+    <div class="tabla-wrap">
+      <table class="tabla-datos">
         <thead>
-            <tr>
-                <th>ID</th>
-                <th>Categoría</th>
-                <th>Autor</th>
-                <th>Título</th>
-                <th>Contenido / pasos</th>
-                <th>Plataforma objetivo</th>
-                <th>Destacado</th>
-            </tr>
+          <tr>
+            <th>ID</th>
+            <th>Categoría</th>
+            <th>Autor</th>
+            <th>Título</th>
+            <th>Contenido / pasos</th>
+            <th>Plataforma objetivo</th>
+            <th>Destacado</th>
+          </tr>
         </thead>
         <tbody>
-            <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
+          <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
         </tbody>
-    </table>
+      </table>
 
-    <h3>Nueva recomendación</h3>
-    <form>
-        <input type="text" placeholder="Título">
-        <textarea placeholder="Contenido / pasos"></textarea>
-        <input type="text" placeholder="Plataforma objetivo">
-        <label><input type="checkbox"> Destacado</label>
-        <button type="submit">Guardar</button>
+      <!-- Estado vacío (mostrar cuando no haya recomendaciones) -->
+      <div class="tabla-empty">
+        <span class="tabla-empty-icono">💭</span>
+        <p>Aún no hay recomendaciones publicadas.</p>
+        <span class="tabla-empty-sub">El contenido nuevo aparecerá aquí automáticamente.</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Formulario -->
+  <div class="card form-card">
+    <div class="form-card-header">
+      <span class="form-card-icono">💡</span>
+      <div>
+        <h3>Nueva recomendación</h3>
+        <p class="form-card-subtitulo">Publica una guía o consejo de seguridad</p>
+      </div>
+    </div>
+
+    <form class="form-vista">
+      <div class="form-grid">
+        <div class="form-field-wrap form-field-full">
+          <label class="form-label">Título</label>
+          <input class="form-field" type="text" placeholder="Ej. Cómo proteger tus redes sociales">
+        </div>
+
+        <div class="form-field-wrap form-field-full">
+          <label class="form-label">Contenido / pasos</label>
+          <textarea class="form-field" placeholder="Describe el consejo o los pasos a seguir"></textarea>
+        </div>
+
+        <div class="form-field-wrap">
+          <label class="form-label">Categoría</label>
+          <select class="form-field">
+            <option value="">Selecciona una categoría</option>
+            <option value="basico">Básico</option>
+            <option value="intermedio">Intermedio</option>
+            <option value="avanzado">Avanzado</option>
+          </select>
+        </div>
+
+        <div class="form-field-wrap">
+          <label class="form-label">Plataforma objetivo</label>
+          <input class="form-field" type="text" placeholder="Ej. Instagram, WhatsApp, general...">
+        </div>
+
+        <div class="form-field-wrap form-field-full form-field-inline">
+          <label class="form-checkbox">
+            <input type="checkbox">
+            <span>Marcar como destacado</span>
+          </label>
+        </div>
+      </div>
+
+      <div class="form-footer">
+        <button type="button" class="btn btn-secondary form-cancel">Cancelar</button>
+        <button type="submit" class="btn btn-primary form-submit">Guardar recomendación</button>
+      </div>
     </form>
+  </div>
+
 </div>

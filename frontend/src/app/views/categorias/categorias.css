@@ -1,0 +1,421 @@
+/* ==============================
+   Vista: Categorías de recomendación
+   ============================== */
+
+.vista-admin {
+  padding: 32px;
+  max-width: 1180px;
+  margin: 0 auto;
+}
+
+/* ---- Encabezado ---- */
+.vista-header {
+  margin-bottom: 24px;
+}
+
+.vista-header-titulo {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.vista-icono {
+  width: 48px;
+  height: 48px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  border-radius: var(--radio-md);
+  background: linear-gradient(135deg, var(--azul-tecnologico), #60A5FA);
+  box-shadow: 0 8px 18px rgba(59, 130, 246, 0.28);
+}
+
+.vista-header h2 {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--gris-oscuro);
+  letter-spacing: -0.2px;
+}
+
+.vista-subtitulo {
+  margin: 3px 0 0 0;
+  font-size: 13.5px;
+  color: var(--gris-texto-suave);
+}
+
+/* ---- Tarjetas de resumen (KPIs) ---- */
+.resumen-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.resumen-card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background: #FFFFFF;
+  border: none;
+  border-radius: var(--radio-lg);
+  padding: 18px 20px;
+  box-shadow: var(--sombra-lg);
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.resumen-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+}
+
+.resumen-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--sombra-md);
+}
+
+.resumen-total::before     { background: var(--azul-marino); }
+.resumen-activas::before   { background: var(--verde-esmeralda); }
+.resumen-basico::before    { background: #15803D; }
+.resumen-avanzado::before  { background: var(--rojo-alerta); }
+
+.resumen-icono {
+  width: 40px;
+  height: 40px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  border-radius: 10px;
+  background: #F3F6FC;
+}
+
+.resumen-card > div {
+  display: flex;
+  flex-direction: column;
+}
+
+.resumen-valor {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--gris-oscuro);
+  line-height: 1.1;
+}
+
+.resumen-etiqueta {
+  font-size: 12px;
+  color: var(--gris-texto-suave);
+  font-weight: 600;
+}
+
+/* ---- Tarjeta de tabla ---- */
+.tabla-card {
+  margin-bottom: 24px;
+  overflow: hidden;
+  border: none;
+  border-radius: var(--radio-lg);
+  box-shadow: var(--sombra-lg);
+}
+
+.tabla-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--gris-borde);
+}
+
+.tabla-card-header h3 {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--gris-oscuro);
+}
+
+.tabla-wrap {
+  overflow-x: auto;
+}
+
+.tabla-datos {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13.5px;
+}
+
+.tabla-datos thead th {
+  position: sticky;
+  top: 0;
+  text-align: left;
+  background: linear-gradient(180deg, var(--azul-marino), #16296b);
+  color: #FFFFFF;
+  font-weight: 600;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding: 13px 16px;
+  white-space: nowrap;
+}
+
+.tabla-datos tbody td {
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--gris-borde);
+  color: var(--gris-oscuro);
+  vertical-align: top;
+}
+
+.tabla-datos tbody tr:nth-child(even) td {
+  background-color: #FAFBFD;
+}
+
+.tabla-datos tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.tabla-datos tbody tr:hover td {
+  background-color: #EEF2FF;
+}
+
+.tabla-datos tbody td:empty::before {
+  content: "—";
+  color: #C4CAD4;
+}
+
+/* Icono CSS mostrado en su columna */
+.tabla-datos td.icono-css {
+  font-family: "Courier New", monospace;
+  font-size: 12px;
+  color: var(--azul-tecnologico);
+  background: #EEF2FF;
+  border-radius: 6px;
+}
+
+/* Estado vacío de la tabla */
+.tabla-empty {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 44px 20px;
+  color: var(--gris-texto-suave);
+}
+
+.tabla-empty-icono {
+  font-size: 34px;
+  margin-bottom: 10px;
+}
+
+.tabla-empty p {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--gris-oscuro);
+}
+
+.tabla-empty-sub {
+  font-size: 12.5px;
+  margin-top: 4px;
+}
+
+/* ---- Insignias ---- */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+  white-space: nowrap;
+}
+
+.badge::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: currentColor;
+}
+
+.badge-basico      { background: #DCFCE7; color: #15803D; }
+.badge-intermedio  { background: #EEF2FF; color: var(--azul-tecnologico); }
+.badge-avanzado    { background: #FEE2E2; color: var(--rojo-alerta); }
+
+.badge-activa      { background: #DCFCE7; color: #15803D; }
+.badge-inactiva    { background: #F3F4F6; color: var(--gris-texto-suave); }
+
+/* ---- Tarjeta de formulario ---- */
+.form-card {
+  padding: 0;
+  overflow: hidden;
+  border: none;
+  border-radius: var(--radio-lg);
+  box-shadow: var(--sombra-lg);
+}
+
+.form-card-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 22px 26px;
+  background: linear-gradient(135deg, #EFF6FF, #DBEAFE);
+  border-bottom: 1px solid var(--gris-borde);
+}
+
+.form-card-icono {
+  width: 42px;
+  height: 42px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 19px;
+  border-radius: 10px;
+  background: #FFFFFF;
+  box-shadow: var(--sombra-sm);
+}
+
+.form-card-header h3 {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--gris-oscuro);
+}
+
+.form-card-subtitulo {
+  margin: 2px 0 0 0;
+  font-size: 12.5px;
+  color: var(--gris-texto-suave);
+}
+
+.form-vista {
+  padding: 24px 26px 26px;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px 16px;
+  margin-bottom: 22px;
+  align-items: end;
+}
+
+.form-field-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.form-field-full {
+  grid-column: 1 / -1;
+}
+
+.form-field-inline {
+  justify-content: flex-end;
+}
+
+.form-label {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--gris-oscuro);
+}
+
+.form-field {
+  width: 100%;
+  padding: 11px 14px;
+  border: 1px solid var(--gris-borde);
+  border-radius: var(--radio-sm);
+  font-size: 14px;
+  font-family: inherit;
+  color: var(--gris-oscuro);
+  background-color: #FFFFFF;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease, transform 0.1s ease;
+}
+
+textarea.form-field {
+  min-height: 100px;
+  resize: vertical;
+}
+
+.form-field::placeholder {
+  color: #9CA3AF;
+}
+
+.form-field:focus {
+  outline: none;
+  border-color: var(--azul-tecnologico);
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
+  transform: translateY(-1px);
+}
+
+/* Checkbox "Categoría activa" */
+.form-checkbox {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--gris-oscuro);
+  background: #F0FDF4;
+  border: 1px solid #BBF7D0;
+  border-radius: var(--radio-sm);
+  padding: 11px 14px;
+  cursor: pointer;
+  width: 100%;
+}
+
+.form-checkbox input[type="checkbox"] {
+  accent-color: var(--verde-esmeralda);
+  width: 17px;
+  height: 17px;
+  cursor: pointer;
+}
+
+.form-footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  padding-top: 18px;
+  border-top: 1px solid var(--gris-borde);
+}
+
+.form-cancel,
+.form-submit {
+  width: auto;
+  margin-bottom: 0;
+  padding-left: 26px;
+  padding-right: 26px;
+}
+
+/* ---- Responsive ---- */
+@media (max-width: 960px) {
+  .resumen-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 720px) {
+  .vista-admin {
+    padding: 20px;
+  }
+  .resumen-grid {
+    grid-template-columns: 1fr;
+  }
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+  .form-footer {
+    flex-direction: column-reverse;
+  }
+  .form-cancel,
+  .form-submit {
+    width: 100%;
+  }
+}

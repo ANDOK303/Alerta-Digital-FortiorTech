@@ -1,40 +1,103 @@
-<div class="contenedor">
-<h2>Categorías de recomendación</h2>
+<div class="contenedor vista-admin">
 
-<table>
-    <thead>
-    <tr>
-        <th>ID</th>
-        <th>Nombre</th>
-        <th>Descripción</th>
-        <th>Icono CSS</th>
-        <th>Nivel de dificultad</th>
-        <th>Activa</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-    </tr>
-    </tbody>
-</table>
+  <!-- Encabezado -->
+  <div class="vista-header">
+    <div class="vista-header-titulo">
+      <span class="vista-icono">🗂️</span>
+      <div>
+        <h2>Categorías de recomendación</h2>
+        <p class="vista-subtitulo">Organiza los contenidos de orientación por categoría y nivel</p>
+      </div>
+    </div>
+  </div>
 
-<h3>Nueva categoría</h3>
-<form>
-    <input type="text" placeholder="Nombre de categoría">
-    <textarea placeholder="Descripción"></textarea>
-    <input type="text" placeholder="Icono CSS">
-    <select>
-    <option value="basico">Básico</option>
-    <option value="intermedio">Intermedio</option>
-    <option value="avanzado">Avanzado</option>
-    </select>
-    <label><input type="checkbox"> Activa</label>
-    <button type="submit">Guardar</button>
-</form>
+  <!-- Tabla -->
+  <div class="card tabla-card">
+    <div class="tabla-card-header">
+      <h3>Listado de categorías</h3>
+    </div>
+    <div class="tabla-wrap">
+      <table class="tabla-datos">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Descripción</th>
+            <th>Icono CSS</th>
+            <th>Nivel de dificultad</th>
+            <th>Activa</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <!-- Estado vacío (mostrar cuando no haya categorías) -->
+      <div class="tabla-empty">
+        <span class="tabla-empty-icono">📁</span>
+        <p>Aún no hay categorías registradas.</p>
+        <span class="tabla-empty-sub">Las categorías nuevas aparecerán aquí automáticamente.</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Formulario -->
+  <div class="card form-card">
+    <div class="form-card-header">
+      <span class="form-card-icono">🗂️</span>
+      <div>
+        <h3>Nueva categoría</h3>
+        <p class="form-card-subtitulo">Crea una categoría para organizar las recomendaciones</p>
+      </div>
+    </div>
+
+    <form class="form-vista">
+      <div class="form-grid">
+        <div class="form-field-wrap">
+          <label class="form-label">Nombre de categoría</label>
+          <input class="form-field" type="text" placeholder="Ej. Redes sociales">
+        </div>
+
+        <div class="form-field-wrap">
+          <label class="form-label">Icono CSS</label>
+          <input class="form-field" type="text" placeholder="Ej. bi-shield-lock">
+        </div>
+
+        <div class="form-field-wrap form-field-full">
+          <label class="form-label">Descripción</label>
+          <textarea class="form-field" placeholder="Explica brevemente de qué trata esta categoría"></textarea>
+        </div>
+
+        <div class="form-field-wrap">
+          <label class="form-label">Nivel de dificultad</label>
+          <select class="form-field">
+            <option value="basico">Básico</option>
+            <option value="intermedio">Intermedio</option>
+            <option value="avanzado">Avanzado</option>
+          </select>
+        </div>
+
+        <div class="form-field-wrap form-field-inline">
+          <label class="form-checkbox">
+            <input type="checkbox" checked>
+            <span>Categoría activa</span>
+          </label>
+        </div>
+      </div>
+
+      <div class="form-footer">
+        <button type="button" class="btn btn-secondary form-cancel">Cancelar</button>
+        <button type="submit" class="btn btn-primary form-submit">Guardar categoría</button>
+      </div>
+    </form>
+  </div>
+
 </div>
