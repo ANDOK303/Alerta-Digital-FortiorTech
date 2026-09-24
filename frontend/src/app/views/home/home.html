@@ -1,18 +1,22 @@
-<div class="home-page">
+<div class="home-page" style="position: relative; z-index: 1;">
+
+  <!-- Marca de agua de fondo (Logo semitransparente) -->
+  <div style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; background-image: url('/Logo.png'); background-size: 50%; background-repeat: no-repeat; background-position: center; opacity: 0.06; pointer-events: none;"></div>
 
   <!-- Barra lateral -->
   <aside class="home-sidebar">
-    <div class="home-sidebar-brand">
-      <span class="home-sidebar-icon">🛡️</span>
-      <span>AlertaDigital</span>
+    <div class="home-sidebar-brand" style="display: flex; align-items: center;">
+      <!-- Logo de la esquina más grande y con fondo blanco -->
+      <img src="/Logo.png" alt="Logo Alerta Digital" style="width: 60px; height: 60px; object-fit: contain; margin-right: 12px; background-color: white; padding: 5px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.2);">
+      <span style="font-size: 1.2rem; font-weight: bold;">AlertaDigital</span>
     </div>
 
     <ul class="home-sidebar-links">
-      <li><a routerLink="/home" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><span>Inicio</span></a></li>
-      <li><a routerLink="/denuncias" routerLinkActive="active"><span>Alertas</span></a></li>
-      <li><a routerLink="/recomendaciones" routerLinkActive="active"><span>Recursos</span></a></li>
-      <li><a routerLink="/hilos-foro" routerLinkActive="active"><span>Foro</span></a></li>
-      <li><a routerLink="/usuarios" routerLinkActive="active"><span>Configuración</span></a></li>
+      <li><a routerLink="/home" class="active" style="cursor: pointer;"><span>Inicio</span></a></li>
+      <li><a style="cursor: pointer;"><span>Alertas</span></a></li>
+      <li><a routerLink="/calificaciones-plataforma" style="cursor: pointer;"><span>Calificar Plataforma</span></a></li>
+      <li><a routerLink="/publicaciones-foro" style="cursor: pointer;"><span>Foro</span></a></li>
+      <li><a style="cursor: pointer;"><span>Configuración</span></a></li>
     </ul>
 
     <a routerLink="/usuarios" class="home-sidebar-user">
@@ -64,9 +68,9 @@
               <h3>Recursos Rápidos</h3>
             </div>
             <div class="home-card-body home-actions">
-              <button class="btn btn-danger" (click)="denunciarAcoso()">Denunciar acoso</button>
-              <button class="btn btn-secondary" (click)="chatOrientacion()">Chat de orientación</button>
-              <button class="btn btn-success" (click)="guiasSeguridad()">Guías de seguridad</button>
+              <button type="button" (click)="irAPruebas()" class="btn btn-danger" style="cursor: pointer;">Adjuntar Pruebas Denuncia</button>
+              <button type="button" (click)="irAForo()" class="btn btn-secondary" style="cursor: pointer;">Publicaciones del Foro</button>
+              <button type="button" (click)="irACalificaciones()" class="btn btn-success" style="cursor: pointer;">Calificar Plataforma</button>
             </div>
           </div>
 

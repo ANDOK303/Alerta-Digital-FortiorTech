@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
-import { Router, RouterLink, RouterLinkActive } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [RouterLink, RouterLinkActive],
+  imports: [RouterLink],
   templateUrl: './home.html',
   styleUrls: ['./home.css']
 })
@@ -14,16 +14,17 @@ export class Home {
 
   constructor(private router: Router) {}
 
-  denunciarAcoso() {
-    this.router.navigate(['/denuncias']);
+  // Funciones infalibles para navegar por código
+  irAPruebas() {
+    this.router.navigate(['/pruebas-denuncia']);
   }
 
-  chatOrientacion() {
-    this.router.navigate(['/hilos-foro']);
+  irAForo() {
+    this.router.navigate(['/publicaciones-foro']);
   }
 
-  guiasSeguridad() {
-    this.router.navigate(['/recomendaciones']);
+  irACalificaciones() {
+    this.router.navigate(['/calificaciones-plataforma']);
   }
 
   cerrarSesion() {
