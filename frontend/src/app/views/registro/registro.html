@@ -2,7 +2,7 @@
   <div class="registro-panel">
 
     <div class="registro-header">
-      <img src="/Logo.png" alt="Logo Alerta Digital" style="width: 200px; height: 200px; object-fit: contain; display: block; background-color: white ;margin: 0 auto; padding: 5px; border-radius: 8px;">
+      <img src="/Logo.png" alt="Logo Alerta Digital" style="width: 200px; height: 200px; object-fit: contain; display: block; background-color: white; margin: 0 auto; padding: 5px; border-radius: 8px;">
       <h2 class="registro-title">Registro de Usuario Corporativo</h2>
       <p class="registro-subtitle">Completa tus datos para crear tu cuenta en AlertaDigital</p>
     </div>
@@ -21,7 +21,7 @@
 
       <div class="registro-field">
         <label>Teléfono (opcional)</label>
-        <input type="text" >
+        <input type="text">
       </div>
 
       <div class="registro-field">
@@ -44,12 +44,32 @@
         <input type="password" placeholder="Maximo 10 caracteres">
       </div>
 
-      <div class="registro-field registro-field-full registro-checkbox">
-        <input type="checkbox" id="terminos">
-        <label for="terminos">Acepto los <a href="#">Términos y Condiciones</a></label>
+      <div class="registro-field registro-field-full registro-checkbox" style="display: flex; align-items: center; justify-content: center; gap: 10px; margin-top: 15px; margin-bottom: 20px;">
+
+        <input
+          type="checkbox"
+          id="terminos"
+          [checked]="terminosAceptados"
+          (change)="actualizarTerminos($event)"
+          style="-webkit-appearance: checkbox !important; appearance: checkbox !important; width: 22px !important; height: 22px !important; cursor: pointer; display: block; accent-color: #1E3A8A;"
+        >
+
+        <label for="terminos" style="cursor: pointer; margin: 0; display: flex; align-items: center; font-size: 0.9rem;">
+          Acepto los&nbsp;
+          <a routerLink="/terminos-condiciones" (click)="$event.stopPropagation()" style="color: #508ad6; text-decoration: underline; cursor: pointer;">
+            Términos y Condiciones
+          </a>
+        </label>
       </div>
 
-      <button type="button" class="btn btn-primary registro-field-full" (click)="crearCuenta()">Crear cuenta</button>
+      <!-- Botón vinculado a la variable del TS -->
+      <button
+        type="button"
+        class="btn btn-primary registro-field-full"
+        [disabled]="!terminosAceptados"
+        (click)="crearCuenta()">
+        Crear cuenta
+      </button>
     </form>
 
     <div class="registro-login-link">

@@ -196,6 +196,12 @@
   text-decoration: underline;
 }
 
+.btn-primary:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
 /* ---- Responsive ---- */
 @media (max-width: 560px) {
   .registro-form {
