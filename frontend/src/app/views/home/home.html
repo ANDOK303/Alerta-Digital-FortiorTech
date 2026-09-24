@@ -1,53 +1,39 @@
 <div class="home-page" style="position: relative; z-index: 1;">
-
+ 
   <!-- Marca de agua de fondo (Logo semitransparente) -->
   <div style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; background-image: url('/Logo.png'); background-size: 50%; background-repeat: no-repeat; background-position: center; opacity: 0.06; pointer-events: none;"></div>
-
+ 
   <!-- Barra lateral -->
   <aside class="home-sidebar">
     <div class="home-sidebar-brand" style="display: flex; align-items: center;">
-      <!-- Logo de la esquina más grande y con fondo blanco -->
       <img src="/Logo.png" alt="Logo Alerta Digital" style="width: 200px; height: 200px; object-fit: contain; display: block; margin: 0 auto; padding: 5px; border-radius: 8px; background-color: white;">
     </div>
-
+ 
     <ul class="home-sidebar-links">
-<<<<<<< HEAD
-      <li><a routerLink="/denuncias" style="cursor: pointer;"><span>Denuncias</span></a></li>
-      <li><a routerLink="/hilos-foro" style="cursor: pointer;"><span>Hilos del Foro</span></a></li>
-      <li><a routerLink="/publicaciones-foro" style="cursor: pointer;"><span>Publicaciones del Foro</span></a></li>
-      <li><a routerLink="/categorias" style="cursor: pointer;"><span>Categorías</span></a></li>
-      <li><a routerLink="/recomendaciones" style="cursor: pointer;"><span>Recomendaciones</span></a></li>
-      <li><a routerLink="/pruebas-denuncia" style="cursor: pointer;"><span>Pruebas de Denuncia</span></a></li>
-      <li><a routerLink="/calificaciones-plataforma" style="cursor: pointer;"><span>Calificar Plataforma</span></a></li>
-      <li *ngIf="esAdmin"><a routerLink="/usuarios" style="cursor: pointer;"><span>Usuarios</span></a></li>
+      <li><a routerLink="/home" routerLinkActive="active" style="cursor: pointer;"><span>Inicio</span></a></li>
+      <li><a routerLink="/denuncias" routerLinkActive="active" style="cursor: pointer;"><span>Realizar Denuncia</span></a></li>
+      <li><a routerLink="/pruebas-denuncia" routerLinkActive="active" style="cursor: pointer;"><span>Pruebas de Denuncia</span></a></li>
+      <li><a routerLink="/publicaciones-foro" routerLinkActive="active" style="cursor: pointer;"><span>Foro Comunitario</span></a></li>
+      <li><a routerLink="/calificaciones-plataforma" routerLinkActive="active" style="cursor: pointer;"><span>Calificar Plataforma</span></a></li>
     </ul>
-=======
-    <li><a [routerLink]="['/home']" class="active" style="cursor: pointer;"><span>Inicio</span></a></li>
-    <li><a style="cursor: pointer;"><span>Alertas</span></a></li>
-    <li><a [routerLink]="['/calificaciones-plataforma']" style="cursor: pointer;"><span>Calificar Plataforma</span></a></li>
-    <li><a [routerLink]="['/publicaciones-foro']" style="cursor: pointer;"><span>Foro</span></a></li>
-    <li><a style="cursor: pointer;"><span>Configuración</span></a></li>
-  </ul>
->>>>>>> f3946d2d045fa29e6dc6585dd0c1fac15d9f71fc
-
-    <a routerLink="/usuarios" class="home-sidebar-user" *ngIf="esAdmin">
+ 
+    <a routerLink="/usuarios" class="home-sidebar-user">
       <div class="home-sidebar-avatar">U</div>
       <div class="home-sidebar-user-info">
         <strong>Usuario</strong>
         <span>Ver perfil</span>
       </div>
     </a>
-
+ 
     <button type="button" class="home-sidebar-logout" (click)="cerrarSesion()">
       Cerrar sesión
     </button>
   </aside>
-
+ 
   <!-- Contenido principal -->
   <div class="home-main">
-
     <div class="home-content">
-
+ 
       <!-- Estado del sistema -->
       <div class="home-status">
         <span class="home-status-dot"></span>
@@ -56,9 +42,9 @@
           <p>Todos los servicios funcionan con normalidad.</p>
         </div>
       </div>
-
+ 
       <div class="home-grid">
-
+ 
         <!-- Alertas Pendientes -->
         <div class="home-card">
           <div class="home-card-header">
@@ -71,20 +57,35 @@
             </div>
           </div>
         </div>
-
+ 
         <div class="home-column">
           <!-- Recursos Rápidos -->
           <div class="home-card">
             <div class="home-card-header">
               <h3>Recursos Rápidos</h3>
             </div>
-            <div class="home-card-body home-actions">
-              <button type="button" (click)="irAPruebas()" class="btn btn-danger" style="cursor: pointer;">Adjuntar Pruebas Denuncia</button>
-              <button type="button" (click)="irAForo()" class="btn btn-secondary" style="cursor: pointer;">Publicaciones del Foro</button>
-              <button type="button" (click)="irACalificaciones()" class="btn btn-success" style="cursor: pointer;">Calificar Plataforma</button>
+            <!-- Botones actualizados y con espaciado para que se vean profesionales -->
+            <div class="home-card-body home-actions" style="display: flex; flex-direction: column; gap: 10px;">
+ 
+              <button type="button" (click)="irADenuncias()" class="btn btn-danger" style="cursor: pointer; width: 100%; border: none; padding: 10px; border-radius: 5px;">
+                Realizar una Denuncia
+              </button>
+ 
+              <button type="button" (click)="irAPruebas()" class="btn btn-warning" style="cursor: pointer; width: 100%; background-color: #f59e0b; color: white; border: none; padding: 10px; border-radius: 5px;">
+                Adjuntar Pruebas
+              </button>
+ 
+              <button type="button" (click)="irAForo()" class="btn btn-secondary" style="cursor: pointer; width: 100%; background-color: #3b82f6; color: white; border: none; padding: 10px; border-radius: 5px;">
+                Publicaciones del Foro
+              </button>
+ 
+              <button type="button" (click)="irACalificaciones()" class="btn btn-success" style="cursor: pointer; width: 100%; background-color: #22c55e; color: white; border: none; padding: 10px; border-radius: 5px;">
+                Calificar Plataforma
+              </button>
+ 
             </div>
           </div>
-
+ 
           <!-- Resumen de Actividad -->
           <div class="home-card">
             <div class="home-card-header">
@@ -102,9 +103,9 @@
             </ul>
           </div>
         </div>
-
+ 
       </div>
     </div>
   </div>
-
+ 
 </div>
