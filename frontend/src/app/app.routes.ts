@@ -6,8 +6,16 @@ import { PruebasDenuncia } from './views/pruebas-denuncia/pruebas-denuncia';
 import { PublicacionesForo } from './views/publicaciones-foro/publicaciones-foro';
 import { CalificacionesPlataforma } from './views/calificaciones-plataforma/calificaciones-plataforma';
 
+// Importamos las dos nuevas vistas
+import { HomePublica } from './views/home-publica/home-publica';
+import { TerminosCondiciones } from './views/terminos-condiciones/terminos-condiciones';
+
 export const routes: Routes = [
-  { path: '', redirectTo: 'login', pathMatch: 'full' },
+  { path: '', redirectTo: 'home-publica', pathMatch: 'full' },
+
+  { path: 'home-publica', component: HomePublica },
+  { path: 'terminos-condiciones', component: TerminosCondiciones },
+
   { path: 'login', component: Login },
   { path: 'registro', component: Registro },
   { path: 'home', component: Home },
@@ -15,5 +23,5 @@ export const routes: Routes = [
   { path: 'publicaciones-foro', component: PublicacionesForo },
   { path: 'calificaciones-plataforma', component: CalificacionesPlataforma },
 
-  { path: '**', redirectTo: 'login' }
+  { path: '**', redirectTo: 'home-publica' }
 ];
