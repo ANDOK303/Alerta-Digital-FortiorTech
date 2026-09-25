@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { HilosForoService } from '../../services/hilos-foro.service';
 
 @Component({
   selector: 'app-publicaciones-foro',
@@ -7,7 +9,22 @@ import { Component } from '@angular/core';
   styleUrls: ['./publicaciones-foro.css']
 })
 export class PublicacionesForo {
-  publicarMensaje() {
-    console.log('Publicando respuesta en el foro...');
+  constructor(
+    private hilosService: HilosForoService,
+    private router: Router
+  ) {}
+
+  publicarMensaje(alias: string, titulo: string, mensaje: string) {
+    if (!titulo.trim() || !mensaje.trim()) {
+      return;
+    }
+
+    this.hilosService.agregarHilo({
+      titulo,
+      contenido_inicial: mensaje,
+      alias_anonimo: alias
+    });
+
+    this.router.navigate(['/hilos-foro']);
   }
 }

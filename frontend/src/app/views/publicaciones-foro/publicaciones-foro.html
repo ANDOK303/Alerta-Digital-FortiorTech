@@ -26,14 +26,20 @@
 
         <div class="form-field-wrap form-field-full">
           <label class="form-label" for="alias">Alias</label>
-          <input class="form-field" id="alias" name="alias" type="text"
+          <input class="form-field" id="alias" name="alias" type="text" #alias
                  placeholder="Ej. UsuarioAnonimo25">
           <span class="form-hint">Si lo dejas en blanco, tu mensaje se publicará como Anónimo.</span>
         </div>
 
         <div class="form-field-wrap form-field-full">
+          <label class="form-label" for="titulo">Título</label>
+          <input class="form-field" id="titulo" name="titulo" type="text" #titulo
+                 placeholder="Ej. ¿Cómo reportar un caso de ciberacoso?">
+        </div>
+
+        <div class="form-field-wrap form-field-full">
           <label class="form-label" for="mensaje">Mensaje</label>
-          <textarea class="form-field" id="mensaje" name="mensaje" rows="4"
+          <textarea class="form-field" id="mensaje" name="mensaje" rows="4" #mensaje
                     placeholder="Escribe tu mensaje aquí..."></textarea>
         </div>
 
@@ -46,7 +52,10 @@
       </div>
 
       <div class="form-footer">
-        <button type="button" class="btn btn-primary form-submit" (click)="publicarMensaje()">Enviar publicación</button>
+        <button type="button" class="btn btn-primary form-submit"
+                (click)="publicarMensaje(alias.value, titulo.value, mensaje.value)">
+          Enviar publicación
+        </button>
       </div>
     </form>
   </div>

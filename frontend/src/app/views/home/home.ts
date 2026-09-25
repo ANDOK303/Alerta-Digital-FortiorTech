@@ -26,6 +26,10 @@ export class Home {
     this.router.navigate(['/publicaciones-foro']);
   }
 
+  irAHiloForo() {
+    this.router.navigate(['/hilo-foro']);
+  }
+
   irACalificaciones() {
     this.router.navigate(['/calificaciones-plataforma']);
   }
