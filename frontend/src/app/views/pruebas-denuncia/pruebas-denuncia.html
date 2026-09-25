@@ -31,10 +31,10 @@
           <span class="form-hint">Puedes adjuntar capturas de pantalla, imágenes o documentos.</span>
         </div>
 
-       <div class="form-field-wrap">
+        <div class="form-field-wrap">
           <label class="form-label" for="idDenuncia">ID Denuncia</label>
-          <select class="form-field" id="idDenuncia" name="puntuacion">
-            
+          <select class="form-field" id="idDenuncia" name="idDenuncia">
+
           </select>
         </div>
 
@@ -47,7 +47,9 @@
       </div>
 
       <div class="form-footer">
-        <button type="button" class="btn btn-secondary form-cancel">Cancelar</button>
+        <button type="button" class="btn btn-secondary btn-volver" routerLink="/home">
+          ← Volver a inicio
+        </button>
         <button type="button" class="btn btn-primary form-submit" (click)="subirPrueba()">Subir archivo</button>
       </div>
     </form>

@@ -45,7 +45,7 @@ export class Home implements OnInit {
   }
 
   irAHiloForo() {
-    this.router.navigate(['/hilo-foro']);
+    this.router.navigate(['/hilos-foro']);
   }
 
   irACalificaciones() {

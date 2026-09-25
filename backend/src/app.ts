@@ -9,6 +9,7 @@ import calificacionesRoutes from './routes/CalificacionesRoutes';
 import usuarioFotoRoutes from './routes/UsuarioFotoRoutes';
 import { pool } from './config/database';
 
+
 const app = express();
 const PORT = process.env.PORT || 3000;
 
