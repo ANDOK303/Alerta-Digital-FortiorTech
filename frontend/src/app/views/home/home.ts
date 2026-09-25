@@ -12,8 +12,7 @@ export class Home {
   estadoSistema: string = 'SEGURO';
   alertasPendientes: number = 0;
 
-  constructor(private router: Router) {}
-
+  constructor(private router: Router) { }
   irADenuncias() {
     this.router.navigate(['/denuncias']);
   }
@@ -35,3 +34,4 @@ export class Home {
     this.router.navigate(['/login']);
   }
 }
+

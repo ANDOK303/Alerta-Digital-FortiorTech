@@ -1,29 +1,68 @@
-<div style="max-width: 500px; margin: 40px auto; background: white; padding: 25px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); text-align: center;">
-  <img src="logo.png" alt="Logo" style="width: 60px; margin-bottom: 10px;">
-  <h2 style="color: var(--azul-marino);">CALIFICA NUESTRA PLATAFORMA</h2>
+<div class="contenedor vista-admin vista-calificar">
 
-  <form style="display: flex; flex-direction: column; gap: 15px; margin-top: 20px; text-align: left;">
-    <select style="padding: 10px; border: 1px solid #ccc; border-radius: 4px;">
-      <option value="5">⭐⭐⭐⭐⭐ Excelente</option>
-      <option value="4">⭐⭐⭐⭐ Muy Bueno</option>
-      <option value="3">⭐⭐⭐ Regular</option>
-      <option value="2">⭐⭐ Malo</option>
-      <option value="1">⭐ Pésimo</option>
-    </select>
+  <!-- Encabezado -->
+  <div class="vista-header">
+    <div class="vista-header-titulo">
+      <span class="vista-icono">⭐</span>
+      <div>
+        <h2>Califica nuestra plataforma</h2>
+        <p class="vista-subtitulo">Tu opinión nos ayuda a mejorar Alerta Digital</p>
+      </div>
+    </div>
+  </div>
 
-    <select style="padding: 10px; border: 1px solid #ccc; border-radius: 4px;">
-      <option value="General">Evaluación General</option>
-      <option value="Foro">Foro</option>
-      <option value="Soporte">Soporte/Atención</option>
-    </select>
-
-    <textarea placeholder="Déjanos tus comentarios..." rows="3" style="padding: 10px; border: 1px solid #ccc; border-radius: 4px;"></textarea>
-
-    <div style="display: flex; align-items: center; gap: 8px; font-size: 14px;">
-      <input type="checkbox" id="recomienda" checked>
-      <label for="recomienda" style="color: var(--gris-oscuro);">Recomendaría este sitio</label>
+  <!-- Formulario -->
+  <div class="card form-card">
+    <div class="form-card-header">
+      <span class="form-card-icono">💡</span>
+      <div>
+        <h3>Nueva calificación</h3>
+        <p class="form-card-subtitulo">Elige una puntuación y cuéntanos tu experiencia</p>
+      </div>
     </div>
 
-    <button type="button" class="btn btn-success" (click)="enviarCalificacion()">ENVIAR CALIFICACIÓN</button>
-  </form>
+    <form class="form-vista">
+      <div class="form-grid">
+
+        <div class="form-field-wrap">
+          <label class="form-label" for="puntuacion">Puntuación</label>
+          <select class="form-field" id="puntuacion" name="puntuacion">
+            <option value="5">⭐⭐⭐⭐⭐ Excelente</option>
+            <option value="4">⭐⭐⭐⭐ Muy bueno</option>
+            <option value="3">⭐⭐⭐ Regular</option>
+            <option value="2">⭐⭐ Malo</option>
+            <option value="1">⭐ Pésimo</option>
+          </select>
+        </div>
+
+        <div class="form-field-wrap">
+          <label class="form-label" for="area">Área a evaluar</label>
+          <select class="form-field" id="area" name="area">
+            <option value="General">Evaluación general</option>
+            <option value="Foro">Foro</option>
+            <option value="Soporte">Soporte / Atención</option>
+          </select>
+        </div>
+
+        <div class="form-field-wrap form-field-full">
+          <label class="form-label" for="comentarios">Comentarios</label>
+          <textarea class="form-field" id="comentarios" name="comentarios" rows="3"
+                    placeholder="Déjanos tus comentarios..."></textarea>
+        </div>
+
+        <div class="form-field-full">
+          <label class="form-check" for="recomienda">
+            <input type="checkbox" id="recomienda" name="recomienda" checked>
+            <span>Recomendaría este sitio</span>
+          </label>
+        </div>
+
+      </div>
+
+      <div class="form-footer">
+        <button type="button" class="btn btn-success form-submit" (click)="enviarCalificacion()">Enviar calificación</button>
+      </div>
+    </form>
+  </div>
+
 </div>

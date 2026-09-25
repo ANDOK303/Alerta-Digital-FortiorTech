@@ -1,14 +1,54 @@
-<div style="max-width: 700px; margin: 40px auto; background: white; padding: 25px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
-  <div style="display: flex; align-items: center; gap: 15px; border-bottom: 2px solid var(--fondo-blanco); padding-bottom: 15px; margin-bottom: 20px;">
-    <img src="logo.png" alt="Logo" style="width: 50px;">
-    <h2 style="color: var(--azul-marino); margin: 0;">PUBLICACIÓN EN EL FORO</h2>
+<div class="contenedor vista-admin vista-foro">
+
+  <!-- Encabezado -->
+  <div class="vista-header">
+    <div class="vista-header-titulo">
+      <span class="vista-icono">💬</span>
+      <div>
+        <h2>Publicación en el foro</h2>
+        <p class="vista-subtitulo">Comparte tu mensaje con la comunidad de forma segura</p>
+      </div>
+    </div>
   </div>
 
-  <form style="display: flex; flex-direction: column; gap: 15px;">
-    <input type="text" placeholder="Alias (Dejar en blanco para Anónimo)" style="padding: 10px; border: 1px solid #ccc; border-radius: 4px;">
-    <textarea placeholder="Escribe tu mensaje aquí..." rows="4" style="padding: 10px; border: 1px solid #ccc; border-radius: 4px;"></textarea>
-    <label style="font-size: 14px; color: var(--gris-oscuro);">Adjuntar Imagen (Opcional):</label>
-    <input type="file" accept="image/*" style="padding: 10px; border: 1px solid #ccc; border-radius: 4px;">
-    <button type="button" class="btn btn-secondary" (click)="publicarMensaje()">ENVIAR PUBLICACIÓN</button>
-  </form>
+  <!-- Formulario -->
+  <div class="card form-card">
+    <div class="form-card-header">
+      <span class="form-card-icono">✍️</span>
+      <div>
+        <h3>Nueva publicación</h3>
+        <p class="form-card-subtitulo">Escribe tu mensaje y, si quieres, adjunta una imagen</p>
+      </div>
+    </div>
+
+    <form class="form-vista">
+      <div class="form-grid">
+
+        <div class="form-field-wrap form-field-full">
+          <label class="form-label" for="alias">Alias</label>
+          <input class="form-field" id="alias" name="alias" type="text"
+                 placeholder="Ej. UsuarioAnonimo25">
+          <span class="form-hint">Si lo dejas en blanco, tu mensaje se publicará como Anónimo.</span>
+        </div>
+
+        <div class="form-field-wrap form-field-full">
+          <label class="form-label" for="mensaje">Mensaje</label>
+          <textarea class="form-field" id="mensaje" name="mensaje" rows="4"
+                    placeholder="Escribe tu mensaje aquí..."></textarea>
+        </div>
+
+        <div class="form-field-wrap form-field-full">
+          <label class="form-label" for="imagen">Adjuntar imagen (opcional)</label>
+          <input class="form-file" id="imagen" name="imagen" type="file" accept="image/*">
+          <span class="form-hint">Formatos de imagen: JPG, PNG, etc.</span>
+        </div>
+
+      </div>
+
+      <div class="form-footer">
+        <button type="button" class="btn btn-primary form-submit" (click)="publicarMensaje()">Enviar publicación</button>
+      </div>
+    </form>
+  </div>
+
 </div>

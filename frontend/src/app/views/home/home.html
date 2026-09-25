@@ -1,20 +1,27 @@
 <div class="home-page" style="position: relative; z-index: 1;">
 
   <!-- Marca de agua de fondo (Logo semitransparente) -->
-  <div style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; background-image: url('/Logo.png'); background-size: 50%; background-repeat: no-repeat; background-position: center; opacity: 0.06; pointer-events: none;"></div>
+  <div
+    style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; background-image: url('/Logo.png'); background-size: 50%; background-repeat: no-repeat; background-position: center; opacity: 0.06; pointer-events: none;">
+  </div>
 
   <!-- Barra lateral -->
   <aside class="home-sidebar">
     <div class="home-sidebar-brand" style="display: flex; align-items: center;">
-      <img src="/Logo.png" alt="Logo Alerta Digital" style="width: 200px; height: 200px; object-fit: contain; display: block; margin: 0 auto; padding: 5px; border-radius: 8px; background-color: white;">
+      <img src="/Logo.png" alt="Logo Alerta Digital"
+        style="width: 200px; height: 200px; object-fit: contain; display: block; margin: 0 auto; padding: 5px; border-radius: 8px; background-color: white;">
     </div>
 
     <ul class="home-sidebar-links">
       <li><a routerLink="/home" routerLinkActive="active" style="cursor: pointer;"><span>Inicio</span></a></li>
-      <li><a routerLink="/denuncias" routerLinkActive="active" style="cursor: pointer;"><span>Realizar Denuncia</span></a></li>
-      <li><a routerLink="/pruebas-denuncia" routerLinkActive="active" style="cursor: pointer;"><span>Pruebas de Denuncia</span></a></li>
-      <li><a routerLink="/publicaciones-foro" routerLinkActive="active" style="cursor: pointer;"><span>Foro Comunitario</span></a></li>
-      <li><a routerLink="/calificaciones-plataforma" routerLinkActive="active" style="cursor: pointer;"><span>Calificar Plataforma</span></a></li>
+      <li><a routerLink="/denuncias" routerLinkActive="active" style="cursor: pointer;"><span>Realizar
+            Denuncia</span></a></li>
+      <li><a routerLink="/pruebas-denuncia" routerLinkActive="active" style="cursor: pointer;"><span>Pruebas de
+            Denuncia</span></a></li>
+      <li><a routerLink="/publicaciones-foro" routerLinkActive="active" style="cursor: pointer;"><span>Foro
+            Comunitario</span></a></li>
+      <li><a routerLink="/calificaciones-plataforma" routerLinkActive="active" style="cursor: pointer;"><span>Calificar
+            Plataforma</span></a></li>
     </ul>
 
     <a routerLink="/usuarios" class="home-sidebar-user">
@@ -67,19 +74,23 @@
             <!-- Botones actualizados y con espaciado para que se vean profesionales -->
             <div class="home-card-body home-actions" style="display: flex; flex-direction: column; gap: 10px;">
 
-              <button type="button" (click)="irADenuncias()" class="btn btn-danger" style="cursor: pointer; width: 100%; border: none; padding: 10px; border-radius: 5px;">
+              <button type="button" (click)="irADenuncias()" class="btn btn-danger"
+                style="cursor: pointer; width: 100%; border: none; padding: 10px; border-radius: 5px;">
                 Realizar una Denuncia
               </button>
 
-              <button type="button" (click)="irAPruebas()" class="btn btn-warning" style="cursor: pointer; width: 100%; background-color: #f59e0b; color: white; border: none; padding: 10px; border-radius: 5px;">
+              <button type="button" (click)="irAPruebas()" class="btn btn-warning"
+                style="cursor: pointer; width: 100%; background-color: #f59e0b; color: white; border: none; padding: 10px; border-radius: 5px;">
                 Adjuntar Pruebas
               </button>
 
-              <button type="button" (click)="irAForo()" class="btn btn-secondary" style="cursor: pointer; width: 100%; background-color: #3b82f6; color: white; border: none; padding: 10px; border-radius: 5px;">
+              <button type="button" (click)="irAForo()" class="btn btn-secondary"
+                style="cursor: pointer; width: 100%; background-color: #3b82f6; color: white; border: none; padding: 10px; border-radius: 5px;">
                 Publicaciones del Foro
               </button>
 
-              <button type="button" (click)="irACalificaciones()" class="btn btn-success" style="cursor: pointer; width: 100%; background-color: #22c55e; color: white; border: none; padding: 10px; border-radius: 5px;">
+              <button type="button" (click)="irACalificaciones()" class="btn btn-success"
+                style="cursor: pointer; width: 100%; background-color: #22c55e; color: white; border: none; padding: 10px; border-radius: 5px;">
                 Calificar Plataforma
               </button>
 
