@@ -3,6 +3,9 @@ import cors from 'cors';
 import path from 'path';
 import authRoutes from './routes/AuthRoutes';
 import homeRoutes from './routes/HomeRoutes';
+import pruebasRoutes from './routes/PruebasRoutes';
+import publicacionesRoutes from './routes/PublicacionesRoutes';
+import calificacionesRoutes from './routes/CalificacionesRoutes';
 import usuarioFotoRoutes from './routes/UsuarioFotoRoutes';
 import { pool } from './config/database';
 
@@ -15,12 +18,12 @@ app.use('/uploads', express.static(path.join(__dirname, '../public/uploads')));
 
 app.use('/api/auth', authRoutes);
 app.use('/api/home', homeRoutes);
-app.use('/api/usuarios', usuarioFotoRoutes);
 
 app.get('/', (req, res) => {
   res.json({ mensaje: 'API Alerta Digital funcionando' });
 });
 
+// Conexion a mySQL
 app.listen(PORT, async () => {
   console.log('Servidor corriendo en el puerto ' + PORT);
 
