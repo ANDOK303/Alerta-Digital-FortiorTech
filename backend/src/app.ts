@@ -18,12 +18,12 @@ app.use('/uploads', express.static(path.join(__dirname, '../public/uploads')));
 
 app.use('/api/auth', authRoutes);
 app.use('/api/home', homeRoutes);
+app.use('/api/usuarios', usuarioFotoRoutes);
 
 app.get('/', (req, res) => {
   res.json({ mensaje: 'API Alerta Digital funcionando' });
 });
 
-// Conexion a mySQL
 app.listen(PORT, async () => {
   console.log('Servidor corriendo en el puerto ' + PORT);
 
