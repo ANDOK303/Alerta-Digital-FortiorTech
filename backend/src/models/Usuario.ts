@@ -5,4 +5,5 @@ export interface Usuario {
   contrasena: string;
   rol: 'usuario' | 'moderador' | 'administrador';
   estado_cuenta: 'activo' | 'suspendido' | 'inactivo';
+  foto_perfil?: string | null;
 }

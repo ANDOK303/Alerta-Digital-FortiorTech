@@ -1,0 +1,52 @@
+<div class="home-page" style="position: relative; z-index: 1;">
+
+    <div
+        style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; background-image: url('/Logo.png'); background-size: 50%; background-repeat: no-repeat; background-position: center; opacity: 0.06; pointer-events: none;">
+    </div>
+
+    <div class="home-main">
+        <div class="home-content">
+
+            <div class="home-card" *ngIf="usuario">
+                <div class="home-card-header">
+                    <h3>Mi Perfil</h3>
+                </div>
+                <div class="home-card-body" style="display: flex; flex-direction: column; gap: 12px;">
+                    <div style="display: flex; align-items: center; gap: 16px;">
+
+                        <label class="perfil-foto-wrap">
+                            <img *ngIf="usuario.foto_perfil" [src]="urlFoto()" class="perfil-foto-img">
+                            <div *ngIf="!usuario.foto_perfil" class="perfil-foto-placeholder">
+                                {{ usuario.nombre_usuario[0] }}
+                            </div>
+                            <div class="perfil-foto-overlay">
+                                <span class="perfil-foto-icono">📷</span>
+                            </div>
+                            <input type="file" accept="image/*" (change)="seleccionarFoto($event)" hidden>
+                        </label>
+
+                        <div>
+                            <h2 style="margin: 0;">{{ usuario.nombre_usuario }}</h2>
+                            <p style="margin: 0; opacity: 0.7;">{{ usuario.rol }}</p>
+                        </div>
+                    </div>
+
+                    <p><strong>Correo:</strong> {{ usuario.correo_electronico }}</p>
+                    <p><strong>Estado de cuenta:</strong> {{ usuario.estado_cuenta }}</p>
+                </div>
+            </div>
+
+            <div class="home-card">
+                <div class="home-card-header">
+                    <h3>Mis Denuncias</h3>
+                </div>
+                <div class="home-card-body">
+                    <div class="home-empty">
+                        <p>Aún no hay denuncias asociadas a tu cuenta.</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

@@ -24,8 +24,9 @@
             Plataforma</span></a></li>
     </ul>
 
-    <a routerLink="/usuarios" class="home-sidebar-user">
-      <div class="home-sidebar-avatar">U</div>
+    <a routerLink="/perfil" class="home-sidebar-user">
+      <img *ngIf="usuario?.foto_perfil" [src]="urlFoto()" class="home-sidebar-avatar" style="object-fit: cover;">
+      <div *ngIf="!usuario?.foto_perfil" class="home-sidebar-avatar">{{ usuario?.nombre_usuario?.[0] || 'U' }}</div>
       <div class="home-sidebar-user-info">
         <strong>Usuario</strong>
         <span>Ver perfil</span>

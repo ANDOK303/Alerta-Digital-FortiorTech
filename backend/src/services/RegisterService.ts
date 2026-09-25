@@ -3,16 +3,16 @@ import { UsuarioRepository } from '../repositories/UsuarioRepository';
 export class RegisterService {
   private repo = new UsuarioRepository();
 
-  registrar(nombre_usuario: string, correo_electronico: string, contrasena: string) {
-    if (this.repo.buscarPorCorreo(correo_electronico)) {
+  async registrar(nombre_usuario: string, correo_electronico: string, contrasena: string) {
+    if (await this.repo.buscarPorCorreo(correo_electronico)) {
       return { exito: false, mensaje: 'El correo ya está registrado' };
     }
 
-    if (this.repo.buscarPorNombreUsuario(nombre_usuario)) {
+    if (await this.repo.buscarPorNombreUsuario(nombre_usuario)) {
       return { exito: false, mensaje: 'El nombre de usuario ya existe' };
     }
 
-    const nuevoUsuario = this.repo.crear({
+    const nuevoUsuario = await this.repo.crear({
       nombre_usuario,
       correo_electronico,
       contrasena,

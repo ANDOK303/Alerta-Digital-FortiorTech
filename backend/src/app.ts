@@ -1,17 +1,21 @@
 import express from 'express';
+import cors from 'cors';
+import path from 'path';
 import authRoutes from './routes/AuthRoutes';
 import homeRoutes from './routes/HomeRoutes';
+import usuarioFotoRoutes from './routes/UsuarioFotoRoutes';
 import { pool } from './config/database';
-import cors from 'cors';
 
 const app = express();
-app.use(cors());
 const PORT = process.env.PORT || 3000;
 
+app.use(cors());
 app.use(express.json());
+app.use('/uploads', express.static(path.join(__dirname, '../public/uploads')));
 
 app.use('/api/auth', authRoutes);
 app.use('/api/home', homeRoutes);
+app.use('/api/usuarios', usuarioFotoRoutes);
 
 app.get('/', (req, res) => {
   res.json({ mensaje: 'API Alerta Digital funcionando' });
