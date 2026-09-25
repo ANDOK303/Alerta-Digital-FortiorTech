@@ -1,0 +1,56 @@
+<!-- Barra superior -->
+<nav style="background-color: var(--azul-marino); color: white; padding: 15px 30px; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 2px 4px rgba(0,0,0,0.2);">
+  <div style="display: flex; align-items: center; gap: 10px;">
+    <!-- Aprovechando el logo que ya tienes configurado en public/assets -->
+    <div style="font-weight: bold; font-size: 1.2rem; letter-spacing: 1px;">AlertaDigital</div>
+  </div>
+  <div style="display: flex; gap: 20px; align-items: center;">
+    <button routerLink="/home-publica" style="background: transparent; color: white; border: 1px solid white; padding: 8px 15px; border-radius: 4px; cursor: pointer;">
+      Volver al Inicio
+    </button>
+    <button routerLink="/login" style="background-color: var(--verde-esmeralda); color: white; border: none; padding: 8px 15px; border-radius: 4px; cursor: pointer; font-weight: bold;">
+      Iniciar Sesión
+    </button>
+  </div>
+</nav>
+
+<div style="padding: 40px 20px; max-width: 900px; margin: auto; background: white; margin-top: 40px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); margin-bottom: 50px;">
+  <div style="text-align: center; margin-bottom: 30px;">
+    <img src="/Logo.png" alt="Logo Alerta Digital" style="width: 200px; height: 200px; object-fit: contain; display: block; margin: 0 auto; padding: 5px; border-radius: 8px;">
+    <h2 style="color: var(--azul-marino); margin: 0; padding-bottom: 10px;">Términos y Condiciones del Servicio</h2>
+    <p style="color: var(--gris-oscuro); font-size: 0.9rem;">Última actualización: Septiembre 2026</p>
+  </div>
+
+  <div style="color: var(--gris-oscuro); margin-top: 20px; line-height: 1.8; text-align: justify;">
+
+    <h3 style="color: var(--azul-secundario); font-size: 1.2rem; border-bottom: 1px solid var(--fondo-general); padding-bottom: 5px; margin-top: 25px;">1. Aceptación de los Términos</h3>
+    <p>Al acceder y utilizar la plataforma <strong>Alerta Digital</strong>, usted acepta estar legalmente vinculado por estos Términos y Condiciones. Si no está de acuerdo con alguno de los términos aquí expuestos, se le prohíbe el uso o acceso a este sitio. Los materiales contenidos en esta plataforma están protegidos por las leyes de derechos de autor y marcas aplicables.</p>
+
+    <h3 style="color: var(--azul-secundario); font-size: 1.2rem; border-bottom: 1px solid var(--fondo-general); padding-bottom: 5px; margin-top: 25px;">2. Uso Correcto de la Plataforma y Ética del Usuario</h3>
+    <p>El sistema de reportes, adjunto de pruebas[cite: 1] y foros de comunidad[cite: 1] debe utilizarse de manera estrictamente ética y responsable. Los usuarios se comprometen a:</p>
+    <ul>
+      <li>Proporcionar información veraz y precisa al momento de registrarse y al emitir cualquier reporte.</li>
+      <li>No utilizar la plataforma para realizar falsas denuncias, difamar, acosar o perjudicar a terceros.</li>
+      <li>No intentar vulnerar la seguridad del sistema, inyectar código malicioso o acceder a áreas no autorizadas.</li>
+    </ul>
+    <p>El uso indebido, la alteración de evidencias o el acoso a través de nuestro sistema de mensajes resultará en la suspensión inmediata y permanente del acceso a su cuenta, reservándonos el derecho de informar a las autoridades competentes si fuese necesario.</p>
+
+    <h3 style="color: var(--azul-secundario); font-size: 1.2rem; border-bottom: 1px solid var(--fondo-general); padding-bottom: 5px; margin-top: 25px;">3. Privacidad y Manejo de Datos (Confidencialidad)</h3>
+    <p>La protección de su identidad y sus datos es prioridad para <strong>Alerta Digital</strong>. Todo el material adjunto, pruebas de denuncia[cite: 1] e información personal recolectada durante el registro[cite: 2] serán manejados bajo estrictos estándares de confidencialidad. Los datos solo serán accesibles por el personal autorizado para gestionar las incidencias y mejorar la seguridad del entorno digital. No venderemos, alquilaremos ni compartiremos su información personal con terceros con fines comerciales.</p>
+
+    <h3 style="color: var(--azul-secundario); font-size: 1.2rem; border-bottom: 1px solid var(--fondo-general); padding-bottom: 5px; margin-top: 25px;">4. Limitación de Responsabilidad</h3>
+    <p>En ningún caso <strong>Alerta Digital</strong>, sus desarrolladores, ni sus proveedores serán responsables de ningún daño (incluyendo, sin limitación, daños por pérdida de datos, interrupción del servicio o daños psicológicos) que surjan del uso o la imposibilidad de usar los materiales y herramientas de la plataforma. El usuario asume toda la responsabilidad por las acciones derivadas de la información obtenida a través del sitio, incluyendo las orientaciones brindadas en el foro[cite: 1].</p>
+
+    <h3 style="color: var(--azul-secundario); font-size: 1.2rem; border-bottom: 1px solid var(--fondo-general); padding-bottom: 5px; margin-top: 25px;">5. Propiedad Intelectual</h3>
+    <p>Todo el contenido original, características y funcionalidades de la plataforma, incluyendo el diseño, logos, textos, gráficos, y código fuente, son propiedad exclusiva de <strong>Alerta Digital</strong> y están protegidos por leyes de propiedad intelectual internacionales.</p>
+
+    <h3 style="color: var(--azul-secundario); font-size: 1.2rem; border-bottom: 1px solid var(--fondo-general); padding-bottom: 5px; margin-top: 25px;">6. Modificaciones de los Términos del Servicio</h3>
+    <p>Nos reservamos el derecho de revisar y modificar estos términos de servicio en cualquier momento y sin previo aviso. Al utilizar este sitio web, usted acepta estar sujeto a la versión actual de estos Términos y Condiciones. Recomendamos revisar esta página periódicamente para mantenerse informado sobre cualquier actualización.</p>
+  </div>
+
+  <div style="margin-top: 40px; text-align: center;">
+      <button routerLink="/registro" style="background-color: var(--azul-tecnologico); color: white; border: none; padding: 10px 20px; border-radius: 4px; cursor: pointer; font-weight: bold; font-size: 1rem;">
+        Entendido, ir a Registro
+      </button>
+  </div>
+</div>

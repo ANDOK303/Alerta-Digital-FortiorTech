@@ -1,11 +1,48 @@
-<div style="max-width: 600px; margin: 40px auto; background: white; padding: 25px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); text-align: center;">
-  <img src="logo.png" alt="Alerta Digital Logo" style="width: 80px; margin-bottom: 15px;">
-  <h2 style="color: var(--azul-marino);">ADJUNTAR PRUEBAS DE DENUNCIA</h2>
-  <p style="color: var(--gris-oscuro);">Sube capturas o documentos de respaldo para tu caso.</p>
+<div class="contenedor vista-admin vista-pruebas">
 
-  <form style="display: flex; flex-direction: column; gap: 15px; margin-top: 20px; text-align: left;">
-    <input type="file" style="padding: 10px; border: 1px solid #ccc; border-radius: 4px;">
-    <textarea placeholder="Descripción de la evidencia..." rows="3" style="padding: 10px; border: 1px solid #ccc; border-radius: 4px;"></textarea>
-    <button type="button" class="btn btn-primary" (click)="subirPrueba()">SUBIR ARCHIVO</button>
-  </form>
+  <!-- Encabezado -->
+  <div class="vista-header">
+    <div class="vista-header-titulo">
+      <span class="vista-icono">📎</span>
+      <div>
+        <h2>Adjuntar pruebas de denuncia</h2>
+        <p class="vista-subtitulo">Sube capturas o documentos de respaldo para tu caso</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Formulario -->
+  <div class="card form-card">
+    <div class="form-card-header">
+      <span class="form-card-icono">🗂️</span>
+      <div>
+        <h3>Nueva evidencia</h3>
+        <p class="form-card-subtitulo">Selecciona el archivo y describe brevemente qué demuestra</p>
+      </div>
+    </div>
+
+    <form class="form-vista">
+      <div class="form-grid">
+
+        <div class="form-field-wrap form-field-full">
+          <label class="form-label" for="archivo">Archivo</label>
+          <input class="form-file" id="archivo" name="archivo" type="file">
+          <span class="form-hint">Puedes adjuntar capturas de pantalla, imágenes o documentos.</span>
+        </div>
+
+        <div class="form-field-wrap form-field-full">
+          <label class="form-label" for="descripcion">Descripción de la evidencia</label>
+          <textarea class="form-field" id="descripcion" name="descripcion" rows="3"
+                    placeholder="Ej. Captura del mensaje recibido el 12 de septiembre"></textarea>
+        </div>
+
+      </div>
+
+      <div class="form-footer">
+        <button type="button" class="btn btn-secondary form-cancel">Cancelar</button>
+        <button type="button" class="btn btn-primary form-submit" (click)="subirPrueba()">Subir archivo</button>
+      </div>
+    </form>
+  </div>
+
 </div>

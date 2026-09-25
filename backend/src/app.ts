@@ -2,8 +2,10 @@ import express from 'express';
 import authRoutes from './routes/AuthRoutes';
 import homeRoutes from './routes/HomeRoutes';
 import { pool } from './config/database';
+import cors from 'cors';
 
 const app = express();
+app.use(cors());
 const PORT = process.env.PORT || 3000;
 
 app.use(express.json());

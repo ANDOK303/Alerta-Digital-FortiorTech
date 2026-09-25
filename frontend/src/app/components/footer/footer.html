@@ -1,0 +1,40 @@
+<footer style="background-color: var(--azul-marino); color: white; padding: 40px 20px 20px 20px; font-family: sans-serif; margin-top: 50px;">
+  <div style="max-width: 1000px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 30px;">
+
+    <!-- Columna 1: Marca -->
+    <div>
+      <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 15px;">
+        <div style="font-weight: bold; font-size: 1.2rem; letter-spacing: 1px;">AlertaDigital</div>
+      </div>
+      <p style="color: #ccc; font-size: 0.9rem; line-height: 1.5;">
+        Empoderando a la comunidad mediante el reporte seguro y la centralización de pruebas. Tu seguridad digital es nuestra prioridad.
+      </p>
+    </div>
+
+    <!-- Columna 2: Enlaces Rápidos -->
+    <div>
+      <h4 style="color: var(--verde-esmeralda); font-size: 1.1rem; margin-bottom: 15px;">Enlaces Rápidos</h4>
+      <ul style="list-style: none; padding: 0; margin: 0; font-size: 0.9rem; line-height: 1.8;">
+        <li><a routerLink="/home-publica" style="color: #ccc; text-decoration: none; cursor: pointer;">Inicio</a></li>
+        <li><a routerLink="/login" style="color: #ccc; text-decoration: none; cursor: pointer;">Iniciar Sesión</a></li>
+        <li><a routerLink="/registro" style="color: #ccc; text-decoration: none; cursor: pointer;">Crear Cuenta</a></li>
+      </ul>
+    </div>
+
+    <!-- Columna 3: Legal y Contacto -->
+    <div>
+      <h4 style="color: var(--verde-esmeralda); font-size: 1.1rem; margin-bottom: 15px;">Legal y Contacto</h4>
+      <ul style="list-style: none; padding: 0; margin: 0; font-size: 0.9rem; line-height: 1.8;">
+        <li><a routerLink="/terminos-condiciones" style="color: #ccc; text-decoration: none; cursor: pointer;">Términos y Condiciones</a></li>
+        <!-- Estos enlaces pueden ir a futuras páginas o correos -->
+        <li><a style="color: #ccc; text-decoration: none; cursor: pointer;">Política de Privacidad</a></li>
+        <li><a href="mailto:soporte@alertadigital.com" style="color: #ccc; text-decoration: none;">soporte@alertadigital.com</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Derechos de Autor -->
+  <div style="text-align: center; margin-top: 20px; font-size: 0.8rem; color: #888;">
+    &copy; {{ anioActual }} Alerta Digital. Todos los derechos reservados.
+  </div>
+</footer>

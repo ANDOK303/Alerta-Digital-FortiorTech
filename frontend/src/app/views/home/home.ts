@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
-import { Router, RouterLink } from '@angular/router';
+import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [RouterLink],
+  imports: [RouterLink, RouterLinkActive], // Importamos RouterLinkActive para que pinte de azul el menú actual
   templateUrl: './home.html',
   styleUrls: ['./home.css']
 })
@@ -12,9 +12,12 @@ export class Home {
   estadoSistema: string = 'SEGURO';
   alertasPendientes: number = 0;
 
-  constructor(private router: Router) {}
+  constructor(private router: Router) { }
 
-  // Funciones infalibles para navegar por código
+  irADenuncias() {
+    this.router.navigate(['/denuncias']);
+  }
+
   irAPruebas() {
     this.router.navigate(['/pruebas-denuncia']);
   }
