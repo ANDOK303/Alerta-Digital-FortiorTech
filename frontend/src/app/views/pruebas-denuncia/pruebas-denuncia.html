@@ -24,16 +24,24 @@
     <form class="form-vista">
       <div class="form-grid">
 
+        <!-- Campo para seleccionar/ingresar el ID de Denuncia -->
+        <div class="form-field-wrap form-field-full">
+          <label class="form-label" for="id_denuncia">Número / ID de la Denuncia</label>
+          <input class="form-field" id="id_denuncia" name="id_denuncia" type="number" min="1"
+                 placeholder="Ej. 1" [(ngModel)]="id_denuncia">
+          <span class="form-hint">Ingresa el código correlativo de la denuncia a la que pertenece esta evidencia.</span>
+        </div>
+
         <div class="form-field-wrap form-field-full">
           <label class="form-label" for="archivo">Archivo</label>
-          <input class="form-file" id="archivo" name="archivo" type="file">
+          <input class="form-file" id="archivo" name="archivo" type="file" (change)="onArchivoSeleccionado($event)">
           <span class="form-hint">Puedes adjuntar capturas de pantalla, imágenes o documentos.</span>
         </div>
 
         <div class="form-field-wrap form-field-full">
           <label class="form-label" for="descripcion">Descripción de la evidencia</label>
           <textarea class="form-field" id="descripcion" name="descripcion" rows="3"
-                    placeholder="Ej. Captura del mensaje recibido el 12 de septiembre"></textarea>
+                    placeholder="Ej. Captura del mensaje recibido el 12 de septiembre" [(ngModel)]="descripcion_evidencia"></textarea>
         </div>
 
       </div>

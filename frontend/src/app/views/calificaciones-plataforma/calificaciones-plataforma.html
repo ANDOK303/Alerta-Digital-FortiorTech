@@ -21,12 +21,13 @@
       </div>
     </div>
 
-    <form class="form-vista">
+    <!-- PREVIENE EL DOBLE CLIC: Se usa (ngSubmit) en la etiqueta form -->
+    <form class="form-vista" (ngSubmit)="enviarCalificacion()">
       <div class="form-grid">
 
         <div class="form-field-wrap">
           <label class="form-label" for="puntuacion">Puntuación</label>
-          <select class="form-field" id="puntuacion" name="puntuacion">
+          <select class="form-field" id="puntuacion" name="puntuacion" [(ngModel)]="puntuacion">
             <option value="5">⭐⭐⭐⭐⭐ Excelente</option>
             <option value="4">⭐⭐⭐⭐ Muy bueno</option>
             <option value="3">⭐⭐⭐ Regular</option>
@@ -37,7 +38,7 @@
 
         <div class="form-field-wrap">
           <label class="form-label" for="area">Área a evaluar</label>
-          <select class="form-field" id="area" name="area">
+          <select class="form-field" id="area" name="area" [(ngModel)]="tipo_evaluacion">
             <option value="General">Evaluación general</option>
             <option value="Foro">Foro</option>
             <option value="Soporte">Soporte / Atención</option>
@@ -47,12 +48,12 @@
         <div class="form-field-wrap form-field-full">
           <label class="form-label" for="comentarios">Comentarios</label>
           <textarea class="form-field" id="comentarios" name="comentarios" rows="3"
-                    placeholder="Déjanos tus comentarios..."></textarea>
+                    placeholder="Déjanos tus comentarios..." [(ngModel)]="comentario"></textarea>
         </div>
 
         <div class="form-field-full">
           <label class="form-check" for="recomienda">
-            <input type="checkbox" id="recomienda" name="recomienda" checked>
+            <input type="checkbox" id="recomienda" name="recomienda" [(ngModel)]="se_recomienda_sitio">
             <span>Recomendaría este sitio</span>
           </label>
         </div>
@@ -60,9 +61,74 @@
       </div>
 
       <div class="form-footer">
-        <button type="button" class="btn btn-success form-submit" (click)="enviarCalificacion()">Enviar calificación</button>
+        <!-- SOLUCIÓN AL DOBLE CLIC: Botón tipo submit -->
+        <button type="submit" class="btn btn-success form-submit" [disabled]="cargando">
+          {{ cargando ? 'Enviando...' : 'Enviar calificación' }}
+        </button>
       </div>
     </form>
   </div>
 
+  <!-- Tarjetas de Calificaciones -->
+  <div class="card form-card" style="margin-top: 2rem;">
+    <div class="form-card-header">
+      <span class="form-card-icono">📊</span>
+      <div>
+        <h3>Calificaciones de la comunidad</h3>
+        <p class="form-card-subtitulo">Opiniones registradas en la plataforma</p>
+      </div>
+    </div>
+
+    <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.25rem; padding: 1rem 0;">
+      <div *ngFor="let item of listaCalificaciones"
+           style="background: #F9FAFB; border: 1px solid #E5E7EB; border-radius: 8px; padding: 1.25rem; display: flex; flex-direction: column; justify-content: space-between; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+
+        <div>
+          <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 0.75rem;">
+
+            <div>
+              <span style="font-weight: 600; color: #1E3A8A; font-size: 0.95rem; display: block;">
+                📌 {{ item.tipo_evaluacion }}
+              </span>
+              <!-- FECHA CON EMOJI Y VARIABLE CORRECTA DE TU BACKEND -->
+              <span style="font-size: 0.8rem; color: #6B7280; display: block; margin-top: 4px; font-weight: 500;">
+                🗓️ {{ item.fecha_calificacion | date:'dd/MM/yyyy' }}
+              </span>
+            </div>
+
+            <span style="background-color: #FEF3C7; color: #D97706; padding: 0.25rem 0.6rem; border-radius: 12px; font-weight: bold; font-size: 0.85rem; height: fit-content;">
+              ★ {{ item.puntuacion }}/5
+            </span>
+          </div>
+
+          <p style="margin: 0 0 1rem 0; color: #374151; font-style: italic; line-height: 1.4; font-size: 0.9rem;">
+            "{{ item.comentario || 'Sin comentario' }}"
+          </p>
+        </div>
+
+        <div style="font-size: 0.85rem; font-weight: 600;"
+             [style.color]="item.se_recomienda_sitio ? '#10B981' : '#EF4444'">
+          {{ item.se_recomienda_sitio ? '✓ Recomienda el sitio' : '✗ No recomienda el sitio' }}
+        </div>
+
+      </div>
+    </div>
+
+    <div *ngIf="listaCalificaciones.length === 0" style="text-align: center; padding: 2rem; color: #6B7280;">
+      <p>Aún no hay calificaciones registradas. ¡Sé el primero en calificar!</p>
+    </div>
+  </div>
+
+</div>
+
+<!-- Modal Personalizado con Fondo Oscuro -->
+<div *ngIf="mostrarModal" class="modal-overlay">
+  <div class="card modal-card">
+    <div class="modal-icono">🎉</div>
+    <h3 class="modal-titulo">¡Calificación enviada!</h3>
+    <p class="modal-mensaje">Muchas gracias por compartir tu experiencia con nosotros. Tu opinión ayuda a mejorar Alerta Digital.</p>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-primary" (click)="cerrarModal()">Aceptar</button>
+    </div>
+  </div>
 </div>

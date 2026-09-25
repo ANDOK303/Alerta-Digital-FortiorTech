@@ -18,6 +18,10 @@ app.use('/uploads', express.static(path.join(__dirname, '../public/uploads')));
 
 app.use('/api/auth', authRoutes);
 app.use('/api/home', homeRoutes);
+app.use('/api/pruebas-denuncia', pruebasRoutes);
+app.use('/api/calificaciones', calificacionesRoutes);
+app.use('/api/publicaciones', publicacionesRoutes); 
+app.use('/api/usuario-foto', usuarioFotoRoutes);
 
 app.get('/', (req, res) => {
   res.json({ mensaje: 'API Alerta Digital funcionando' });

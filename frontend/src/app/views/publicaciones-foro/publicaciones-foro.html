@@ -27,19 +27,19 @@
         <div class="form-field-wrap form-field-full">
           <label class="form-label" for="alias">Alias</label>
           <input class="form-field" id="alias" name="alias" type="text"
-                 placeholder="Ej. UsuarioAnonimo25">
+                 placeholder="Ej. UsuarioAnonimo25" [(ngModel)]="alias">
           <span class="form-hint">Si lo dejas en blanco, tu mensaje se publicará como Anónimo.</span>
         </div>
 
         <div class="form-field-wrap form-field-full">
           <label class="form-label" for="mensaje">Mensaje</label>
           <textarea class="form-field" id="mensaje" name="mensaje" rows="4"
-                    placeholder="Escribe tu mensaje aquí..."></textarea>
+                    placeholder="Escribe tu mensaje aquí..." [(ngModel)]="mensaje"></textarea>
         </div>
 
         <div class="form-field-wrap form-field-full">
           <label class="form-label" for="imagen">Adjuntar imagen (opcional)</label>
-          <input class="form-file" id="imagen" name="imagen" type="file" accept="image/*">
+          <input class="form-file" id="imagen" name="imagen" type="file" accept="image/*" (change)="onArchivoSeleccionado($event)">
           <span class="form-hint">Formatos de imagen: JPG, PNG, etc.</span>
         </div>
 
