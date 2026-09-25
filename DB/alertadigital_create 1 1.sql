@@ -135,3 +135,4 @@ create table calificaciones_plataforma (
         references usuarios(id_usuario) 
         on delete cascade
 );
+ALTER TABLE usuarios ADD COLUMN foto_perfil VARCHAR(255) NULL;

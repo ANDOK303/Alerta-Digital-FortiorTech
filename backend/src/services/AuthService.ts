@@ -3,8 +3,8 @@ import { UsuarioRepository } from '../repositories/UsuarioRepository';
 export class AuthService {
   private repo = new UsuarioRepository();
 
-  login(correo: string, contrasena: string) {
-    const usuario = this.repo.buscarPorCorreo(correo);
+  async login(correo: string, contrasena: string) {
+    const usuario = await this.repo.buscarPorCorreo(correo);
 
     if (!usuario) {
       return { exito: false, mensaje: 'Usuario no encontrado' };

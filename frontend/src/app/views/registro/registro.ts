@@ -10,7 +10,14 @@ import { RouterLink, Router } from '@angular/router';
 })
 export class Registro {
 
+  terminosAceptados: boolean = false;
+
   constructor(private router: Router) {}
+
+  actualizarTerminos(event: Event) {
+    const checkbox = event.target as HTMLInputElement;
+    this.terminosAceptados = checkbox.checked;
+  }
 
   crearCuenta() {
     console.log('Botón de Crear Cuenta presionado');
