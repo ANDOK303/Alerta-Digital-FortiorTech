@@ -1,30 +1,55 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
-import { HilosForoService } from '../../services/hilos-foro.service';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-publicaciones-foro',
   standalone: true,
+  imports: [CommonModule],
   templateUrl: './publicaciones-foro.html',
   styleUrls: ['./publicaciones-foro.css']
 })
-export class PublicacionesForo {
+export class PublicacionesForo implements OnInit {
+  publicaciones: any[] = [];
+
   constructor(
-    private hilosService: HilosForoService,
-    private router: Router
+    private http: HttpClient,
+    private router: Router,
+    private cdr: ChangeDetectorRef
   ) {}
 
-  publicarMensaje(alias: string, titulo: string, mensaje: string) {
-    if (!titulo.trim() || !mensaje.trim()) {
+  ngOnInit() {
+    this.cargarPublicaciones();
+  }
+
+  cargarPublicaciones() {
+    this.http.get<any[]>('http://localhost:3000/api/publicaciones-foro').subscribe({
+      next: (data) => {
+        this.publicaciones = data;
+        this.cdr.detectChanges();
+      },
+      error: (error) => console.error('Error al cargar publicaciones', error)
+    });
+  }
+
+  publicarMensaje(alias: string, idHilo: string, mensaje: string) {
+    if (!idHilo.trim() || !mensaje.trim()) {
       return;
     }
 
-    this.hilosService.agregarHilo({
-      titulo,
-      contenido_inicial: mensaje,
-      alias_anonimo: alias
-    });
+    const nuevaPublicacion = {
+      id_hilo: Number(idHilo),
+      alias_anonimo: alias || 'Anónimo',
+      mensaje
+    };
 
-    this.router.navigate(['/hilos-foro']);
+    this.http.post<any>('http://localhost:3000/api/publicaciones-foro', nuevaPublicacion).subscribe({
+      next: (respuesta) => {
+        this.publicaciones.push(respuesta);
+        this.cdr.detectChanges();
+      },
+      error: (error) => console.error('Error al publicar', error)
+    });
   }
 }

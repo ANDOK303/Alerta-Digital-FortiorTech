@@ -10,6 +10,8 @@ import { HomePublica } from './views/home-publica/home-publica';
 import { TerminosCondiciones } from './views/terminos-condiciones/terminos-condiciones';
 import { Perfil } from './views/perfil/perfil';
 import { HilosForo } from './views/hilos-foro/hilos-foro';
+import { Categorias } from './views/categorias/categorias';
+import { Recomendaciones } from './views/recomendaciones/recomendaciones';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'home-publica', pathMatch: 'full' },
@@ -24,6 +26,8 @@ export const routes: Routes = [
   { path: 'publicaciones-foro', component: PublicacionesForo },
   { path: 'hilos-foro', component: HilosForo },
   { path: 'calificaciones-plataforma', component: CalificacionesPlataforma },
+  { path: 'categorias', component: Categorias },
+  { path: 'recomendaciones', component: Recomendaciones },
 
   { path: '**', redirectTo: 'home-publica' }
 ];

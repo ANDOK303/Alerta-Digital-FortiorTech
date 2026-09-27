@@ -10,7 +10,7 @@
       </div>
     </div>
   </div>
-  
+
   <!-- Tabla -->
   <div class="card tabla-card">
     <div class="tabla-card-header">
@@ -30,20 +30,20 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
+          <tr *ngFor="let r of recomendaciones">
+            <td>{{ r.id_recomendacion }}</td>
+            <td>{{ r.id_categoria }}</td>
+            <td>{{ r.id_autor }}</td>
+            <td>{{ r.titulo }}</td>
+            <td>{{ r.contenido_pasos }}</td>
+            <td>{{ r.plataforma_objetivo }}</td>
+            <td>{{ r.es_destacado ? 'Sí' : 'No' }}</td>
           </tr>
         </tbody>
       </table>
 
-      <!-- Estado vacío (mostrar cuando no haya recomendaciones) -->
-      <div class="tabla-empty">
+      <!-- Estado vacío -->
+      <div class="tabla-empty" *ngIf="recomendaciones.length === 0">
         <span class="tabla-empty-icono">💭</span>
         <p>Aún no hay recomendaciones publicadas.</p>
         <span class="tabla-empty-sub">El contenido nuevo aparecerá aquí automáticamente.</span>
@@ -61,36 +61,31 @@
       </div>
     </div>
 
-    <form class="form-vista">
+    <form class="form-vista" (ngSubmit)="guardarRecomendacion()">
       <div class="form-grid">
         <div class="form-field-wrap form-field-full">
           <label class="form-label">Título</label>
-          <input class="form-field" type="text" placeholder="Ej. Cómo proteger tus redes sociales">
+          <input class="form-field" type="text" [(ngModel)]="nuevaRecomendacion.titulo" name="titulo" placeholder="Ej. Cómo proteger tus redes sociales">
         </div>
 
         <div class="form-field-wrap form-field-full">
           <label class="form-label">Contenido / pasos</label>
-          <textarea class="form-field" placeholder="Describe el consejo o los pasos a seguir"></textarea>
+          <textarea class="form-field" [(ngModel)]="nuevaRecomendacion.contenido_pasos" name="contenido_pasos" placeholder="Describe el consejo o los pasos a seguir"></textarea>
         </div>
 
         <div class="form-field-wrap">
-          <label class="form-label">Categoría</label>
-          <select class="form-field">
-            <option value="">Selecciona una categoría</option>
-            <option value="basico">Básico</option>
-            <option value="intermedio">Intermedio</option>
-            <option value="avanzado">Avanzado</option>
-          </select>
+          <label class="form-label">ID Categoría</label>
+          <input class="form-field" type="number" [(ngModel)]="nuevaRecomendacion.id_categoria" name="id_categoria">
         </div>
 
         <div class="form-field-wrap">
           <label class="form-label">Plataforma objetivo</label>
-          <input class="form-field" type="text" placeholder="Ej. Instagram, WhatsApp, general...">
+          <input class="form-field" type="text" [(ngModel)]="nuevaRecomendacion.plataforma_objetivo" name="plataforma_objetivo" placeholder="Ej. Instagram, WhatsApp, general...">
         </div>
 
         <div class="form-field-wrap form-field-full form-field-inline">
           <label class="form-checkbox">
-            <input type="checkbox">
+            <input type="checkbox" [(ngModel)]="nuevaRecomendacion.es_destacado" name="es_destacado">
             <span>Marcar como destacado</span>
           </label>
         </div>

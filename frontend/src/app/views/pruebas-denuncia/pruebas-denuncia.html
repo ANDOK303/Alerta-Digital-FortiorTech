@@ -11,6 +11,37 @@
     </div>
   </div>
 
+  <!-- Tabla -->
+  <div class="card tabla-card">
+    <div class="tabla-card-header">
+      <h3>Pruebas registradas</h3>
+    </div>
+    <div class="tabla-wrap">
+      <table class="tabla-datos">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>ID Denuncia</th>
+            <th>Archivo</th>
+            <th>Tipo</th>
+            <th>Tamaño (bytes)</th>
+            <th>Descripción</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let p of pruebas">
+            <td>{{ p.id_prueba }}</td>
+            <td>{{ p.id_denuncia }}</td>
+            <td>{{ p.url_archivo }}</td>
+            <td>{{ p.tipo_archivo }}</td>
+            <td>{{ p.tamano_bytes }}</td>
+            <td>{{ p.descripcion_evidencia }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
   <!-- Formulario -->
   <div class="card form-card">
     <div class="form-card-header">
@@ -27,20 +58,19 @@
 
         <div class="form-field-wrap form-field-full">
           <label class="form-label" for="archivo">Archivo</label>
-          <input class="form-file" id="archivo" name="archivo" type="file">
+          <input class="form-file" id="archivo" name="archivo" type="file" (change)="seleccionarArchivo($event)">
           <span class="form-hint">Puedes adjuntar capturas de pantalla, imágenes o documentos.</span>
         </div>
 
        <div class="form-field-wrap">
           <label class="form-label" for="idDenuncia">ID Denuncia</label>
-          <select class="form-field" id="idDenuncia" name="puntuacion">
-            
-          </select>
+          <input class="form-field" id="idDenuncia" type="number" [(ngModel)]="idDenuncia" name="idDenuncia">
         </div>
 
         <div class="form-field-wrap form-field-full">
           <label class="form-label" for="descripcion">Descripción de la evidencia</label>
           <textarea class="form-field" id="descripcion" name="descripcion" rows="3"
+                    [(ngModel)]="descripcion"
                     placeholder="Ej. Captura del mensaje recibido el 12 de septiembre"></textarea>
         </div>
 

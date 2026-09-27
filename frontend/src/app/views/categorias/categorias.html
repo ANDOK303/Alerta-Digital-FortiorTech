@@ -11,8 +11,8 @@
     </div>
   </div>
 
-  <!-- Tabla -->
-  <div class="card tabla-card">
+  <!-- Tabla: solo admin -->
+  <div class="card tabla-card" *ngIf="esAdmin">
     <div class="tabla-card-header">
       <h3>Listado de categorías</h3>
     </div>
@@ -29,19 +29,18 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
+          <tr *ngFor="let c of categorias">
+            <td>{{ c.id_categoria }}</td>
+            <td>{{ c.nombre_categoria }}</td>
+            <td>{{ c.descripcion }}</td>
+            <td>{{ c.icono_css }}</td>
+            <td>{{ c.nivel_dificultad }}</td>
+            <td>{{ c.es_activa ? 'Sí' : 'No' }}</td>
           </tr>
         </tbody>
       </table>
 
-      <!-- Estado vacío (mostrar cuando no haya categorías) -->
-      <div class="tabla-empty">
+      <div class="tabla-empty" *ngIf="categorias.length === 0">
         <span class="tabla-empty-icono">📁</span>
         <p>Aún no hay categorías registradas.</p>
         <span class="tabla-empty-sub">Las categorías nuevas aparecerán aquí automáticamente.</span>
@@ -49,7 +48,7 @@
     </div>
   </div>
 
-  <!-- Formulario -->
+  <!-- Formulario: todos pueden crear -->
   <div class="card form-card">
     <div class="form-card-header">
       <span class="form-card-icono">🗂️</span>
@@ -59,35 +58,35 @@
       </div>
     </div>
 
-    <form class="form-vista">
+    <form class="form-vista" (ngSubmit)="guardarCategoria()">
       <div class="form-grid">
         <div class="form-field-wrap">
           <label class="form-label">Nombre de categoría</label>
-          <input class="form-field" type="text" placeholder="Ej. Redes sociales">
+          <input class="form-field" type="text" [(ngModel)]="nuevaCategoria.nombre_categoria" name="nombre_categoria" placeholder="Ej. Redes sociales">
         </div>
 
         <div class="form-field-wrap">
           <label class="form-label">Icono CSS</label>
-          <input class="form-field" type="text" placeholder="Ej. bi-shield-lock">
+          <input class="form-field" type="text" [(ngModel)]="nuevaCategoria.icono_css" name="icono_css" placeholder="Ej. bi-shield-lock">
         </div>
 
         <div class="form-field-wrap form-field-full">
           <label class="form-label">Descripción</label>
-          <textarea class="form-field" placeholder="Explica brevemente de qué trata esta categoría"></textarea>
+          <textarea class="form-field" [(ngModel)]="nuevaCategoria.descripcion" name="descripcion" placeholder="Explica brevemente de qué trata esta categoría"></textarea>
         </div>
 
-        <div class="form-field-wrap">
+        <div class="form-field-wrap" *ngIf="esAdmin">
           <label class="form-label">Nivel de dificultad</label>
-          <select class="form-field">
+          <select class="form-field" [(ngModel)]="nuevaCategoria.nivel_dificultad" name="nivel_dificultad">
             <option value="basico">Básico</option>
             <option value="intermedio">Intermedio</option>
             <option value="avanzado">Avanzado</option>
           </select>
         </div>
 
-        <div class="form-field-wrap form-field-inline">
+        <div class="form-field-wrap form-field-inline" *ngIf="esAdmin">
           <label class="form-checkbox">
-            <input type="checkbox" checked>
+            <input type="checkbox" [(ngModel)]="nuevaCategoria.es_activa" name="es_activa">
             <span>Categoría activa</span>
           </label>
         </div>
