@@ -1,31 +1,75 @@
 import { pool } from '../config/database';
-import { Usuario } from '../models/Usuario';
-import { RowDataPacket } from 'mysql2';
+import { RowDataPacket, ResultSetHeader } from 'mysql2';
 
 export class UsuarioRepository {
-  async buscarPorCorreo(correo: string): Promise<Usuario | undefined> {
+  
+  // Se agrega obtenerTodos para que la tabla del administrador cargue los datos[cite: 4]
+  async obtenerTodos(): Promise<any[]> {
+    const [rows] = await pool.query<RowDataPacket[]>(
+      'SELECT id_usuario, nombre, correo_electronico, rol, estado_cuenta FROM usuarios'
+    );
+    return rows;
+  }
+
+  async buscarPorCorreo(correo: string): Promise<any> {
     const [rows] = await pool.query<RowDataPacket[]>(
       'SELECT * FROM usuarios WHERE correo_electronico = ?',
       [correo]
     );
-    return rows[0] as Usuario | undefined;
+    return rows.length > 0 ? rows[0] : null;
   }
 
-  async buscarPorNombreUsuario(nombre: string): Promise<Usuario | undefined> {
+  async obtenerPorId(id: number): Promise<any> {
     const [rows] = await pool.query<RowDataPacket[]>(
-      'SELECT * FROM usuarios WHERE nombre_usuario = ?',
-      [nombre]
+      'SELECT id_usuario, nombre, correo_electronico, rol, estado_cuenta FROM usuarios WHERE id_usuario = ?',
+      [id]
     );
-    return rows[0] as Usuario | undefined;
+    return rows.length > 0 ? rows[0] : null;
   }
 
-  async crear(usuario: Omit<Usuario, 'id_usuario'>): Promise<Usuario> {
-    const [result] = await pool.query(
-      'INSERT INTO usuarios (nombre_usuario, correo_electronico, contrasena, rol, estado_cuenta) VALUES (?, ?, ?, ?, ?)',
-      [usuario.nombre_usuario, usuario.correo_electronico, usuario.contrasena, usuario.rol, usuario.estado_cuenta]
-    );
+  async crear(usuario: any): Promise<number> {
+    const sql = `
+      INSERT INTO usuarios (nombre, correo_electronico, contrasena, rol, estado_cuenta) 
+      VALUES (?, ?, ?, ?, 'activo')
+    `;
+    
+    // Asignamos 'estudiante' por defecto si no envían un rol desde el frontend
+    const rolUsuario = usuario.rol ? usuario.rol : 'estudiante';
 
-    const insertId = (result as any).insertId;
-    return { id_usuario: insertId, ...usuario };
+    const [result] = await pool.query<ResultSetHeader>(sql, [
+      usuario.nombre,
+      usuario.correo_electronico,
+      usuario.contrasena,
+      rolUsuario
+    ]);
+
+    return result.insertId;
+  }
+
+  // Se agrega actualizar para que el botón de "Actualizar" del panel admin funcione[cite: 4]
+  async actualizar(id: number, usuario: any): Promise<boolean> {
+    const sql = `
+      UPDATE usuarios 
+      SET nombre = ?, correo_electronico = ?, rol = ?
+      WHERE id_usuario = ?
+    `;
+    
+    const [result] = await pool.query<ResultSetHeader>(sql, [
+      usuario.nombre,
+      usuario.correo_electronico,
+      usuario.rol,
+      id
+    ]);
+
+    return result.affectedRows > 0;
+  }
+
+  // Se agrega eliminar para el botón de "Eliminar" de la tabla admin[cite: 4]
+  async eliminar(id: number): Promise<boolean> {
+    const [result] = await pool.query<ResultSetHeader>(
+      'DELETE FROM usuarios WHERE id_usuario = ?', 
+      [id]
+    );
+    return result.affectedRows > 0;
   }
 }

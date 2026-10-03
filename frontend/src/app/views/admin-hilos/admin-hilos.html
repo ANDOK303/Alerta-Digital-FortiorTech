@@ -1,0 +1,60 @@
+<div class="contenedor vista-admin">
+  <div class="vista-header">
+    <div class="vista-header-titulo">
+      <span class="vista-icono">💬</span>
+      <div>
+        <h2>Admin - Hilos del Foro</h2>
+        <p class="vista-subtitulo">Gestión total de conversaciones y publicaciones</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Formulario -->
+  <div class="card form-card">
+    <div class="form-card-header">
+      <span class="form-card-icono">{{ modoEdicion ? '✏️' : '📝' }}</span>
+      <div><h3>{{ modoEdicion ? 'Editar Hilo' : 'Nuevo Hilo' }}</h3></div>
+    </div>
+    <form class="form-vista" (ngSubmit)="guardarHilo()">
+      <div class="form-grid">
+        <div class="form-field-wrap form-field-full">
+          <label class="form-label">Título</label>
+          <input class="form-field" type="text" [(ngModel)]="hiloActual.titulo" name="titulo" required>
+        </div>
+        <div class="form-field-wrap form-field-full">
+          <label class="form-label">Contenido</label>
+          <textarea class="form-field" [(ngModel)]="hiloActual.contenido_inicial" name="contenido_inicial" required></textarea>
+        </div>
+        <div class="form-field-wrap">
+          <label class="form-label">Estado</label>
+          <select class="form-field" [(ngModel)]="hiloActual.estado" name="estado">
+            <option value="abierto">Abierto</option>
+            <option value="cerrado">Cerrado</option>
+            <option value="fijado">Fijado</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-footer">
+        <button type="button" class="btn btn-secondary form-cancel" *ngIf="modoEdicion" (click)="cancelar()">Cancelar</button>
+        <button type="submit" class="btn btn-primary form-submit">Guardar Hilo</button>
+      </div>
+    </form>
+  </div>
+
+  <!-- Tarjetas de hilos -->
+  <div class="hilos-grid">
+    <div class="hilo-card" *ngFor="let h of hilos">
+      <div class="hilo-card-top">
+        <span class="badge" [ngClass]="'badge-' + h.estado">{{ h.estado }}</span>
+        <span class="hilo-respuestas">💬 {{ h.total_respuestas }}</span>
+      </div>
+      <h3 class="hilo-titulo">{{ h.titulo }}</h3>
+      <p class="hilo-contenido">{{ h.contenido_inicial }}</p>
+      
+      <div class="hilo-card-footer">
+        <button type="button" (click)="editarHilo(h)" style="cursor:pointer; border:none; background:transparent">✏️</button>
+        <button type="button" (click)="eliminarHilo(h.id)" style="cursor:pointer; border:none; background:transparent">🗑️</button>
+      </div>
+    </div>
+  </div>
+</div>

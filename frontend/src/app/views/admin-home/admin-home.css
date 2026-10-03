@@ -1,0 +1,149 @@
+/* Contenedor Principal */
+.vista-admin {
+  padding: 32px;
+  max-width: 1180px;
+  margin: 0 auto;
+  font-family: 'Segoe UI', system-ui, sans-serif;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Encabezado */
+.vista-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+  border-bottom: 2px solid #E5E7EB;
+  padding-bottom: 15px;
+}
+
+.vista-header-titulo h2 {
+  font-size: 1.8rem;
+  color: #111827;
+  margin: 0;
+  font-weight: 800;
+}
+
+.vista-subtitulo {
+  color: #6B7280;
+  font-size: 0.95rem;
+  margin-top: 5px;
+}
+
+/* Tarjetas de Formulario y Tablas */
+.card {
+  background: #FFFFFF;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  border: 1px solid #E5E7EB;
+  margin-bottom: 25px;
+  overflow: hidden;
+}
+
+.form-card-header, .tabla-card-header {
+  background: linear-gradient(135deg, #F9FAFB, #F3F6FC);
+  padding: 18px 24px;
+  border-bottom: 1px solid #E5E7EB;
+}
+
+.form-card-header h3, .tabla-card-header h3 {
+  margin: 0;
+  color: #1F2937;
+  font-size: 1.15rem;
+}
+
+/* Formularios */
+.form-vista {
+  padding: 24px;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.form-label {
+  display: block;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #374151;
+  margin-bottom: 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.form-field {
+  width: 100%;
+  padding: 10px 14px;
+  border: 1px solid #D1D5DB;
+  border-radius: 6px;
+  transition: all 0.2s;
+}
+
+.form-field:focus {
+  border-color: #3B82F6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+  outline: none;
+}
+
+/* Tablas Profesionales */
+.tabla-wrap {
+  overflow-x: auto;
+}
+
+.tabla-datos {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.tabla-datos th {
+  background-color: #F3F6FC;
+  color: #374151;
+  font-weight: 600;
+  padding: 14px 20px;
+  text-align: left;
+  font-size: 0.9rem;
+}
+
+.tabla-datos td {
+  padding: 14px 20px;
+  border-bottom: 1px solid #E5E7EB;
+  color: #4B5563;
+  font-size: 0.9rem;
+}
+
+.tabla-datos tbody tr:hover {
+  background-color: #F9FAFB;
+}
+
+/* Botones y Badges */
+.btn {
+  padding: 10px 20px;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+  transition: transform 0.1s, background-color 0.2s;
+}
+
+.btn:active { transform: scale(0.98); }
+.btn-primary { background-color: #3B82F6; color: white; }
+.btn-primary:hover { background-color: #2563EB; }
+.btn-secondary { background-color: #E5E7EB; color: #374151; }
+.btn-secondary:hover { background-color: #D1D5DB; }
+
+.badge {
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+.badge-abierto { background-color: #DEF7EC; color: #03543F; }
+.badge-fijado { background-color: #FDE8E8; color: #9B1C1C; }

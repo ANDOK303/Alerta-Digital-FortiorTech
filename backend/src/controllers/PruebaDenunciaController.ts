@@ -15,7 +15,7 @@ export class PruebaDenunciaController {
 
   obtenerPorId = async (req: Request, res: Response) => {
     try {
-      const id = Number(req.params['id']);
+      const id = Number(req.params.id);
       const item = await this.service.buscarPorId(id);
       if (!item) return res.status(404).json({ mensaje: 'Prueba no encontrada' });
       res.status(200).json(item);
@@ -26,8 +26,8 @@ export class PruebaDenunciaController {
 
   crear = async (req: Request, res: Response) => {
     try {
-      const insertId = await this.service.crear(req.body);
-      res.status(201).json({ mensaje: 'Prueba de denuncia creada', id: insertId });
+      const id = await this.service.crear(req.body);
+      res.status(201).json({ mensaje: 'Prueba creada', id_prueba: id, ...req.body });
     } catch (error) {
       res.status(500).json({ error: 'Error al crear la prueba' });
     }
@@ -35,10 +35,10 @@ export class PruebaDenunciaController {
 
   actualizar = async (req: Request, res: Response) => {
     try {
-      const id = Number(req.params['id']);
-      const exito = await this.service.actualizar(id, req.body);
-      if (!exito) return res.status(404).json({ mensaje: 'Registro no encontrado para actualizar' });
-      res.status(200).json({ mensaje: 'Prueba actualizada correctamente' });
+      const id = Number(req.params.id);
+      const actualizado = await this.service.actualizar(id, req.body);
+      if (!actualizado) return res.status(404).json({ mensaje: 'Prueba no encontrada' });
+      res.status(200).json({ mensaje: 'Prueba actualizada' });
     } catch (error) {
       res.status(500).json({ error: 'Error al actualizar la prueba' });
     }
@@ -46,10 +46,10 @@ export class PruebaDenunciaController {
 
   eliminar = async (req: Request, res: Response) => {
     try {
-      const id = Number(req.params['id']);
-      const exito = await this.service.eliminar(id);
-      if (!exito) return res.status(404).json({ mensaje: 'Registro no encontrado para eliminar' });
-      res.status(200).json({ mensaje: 'Prueba eliminada correctamente' });
+      const id = Number(req.params.id);
+      const eliminado = await this.service.eliminar(id);
+      if (!eliminado) return res.status(404).json({ mensaje: 'Prueba no encontrada' });
+      res.status(200).json({ mensaje: 'Prueba eliminada' });
     } catch (error) {
       res.status(500).json({ error: 'Error al eliminar la prueba' });
     }

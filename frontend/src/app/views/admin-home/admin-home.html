@@ -1,0 +1,34 @@
+<div class="contenedor vista-admin">
+  <div class="vista-header">
+    <div class="vista-header-titulo">
+      <span class="vista-icono">🛡️</span>
+      <div>
+        <h2>Panel de Administrador</h2>
+        <p class="vista-subtitulo">Bienvenido. Gestiona los módulos de la plataforma.</p>
+      </div>
+    </div>
+    <button type="button" class="btn btn-danger btn-nuevo-hilo" (click)="cerrarSesion()">
+      Cerrar Sesión
+    </button>
+  </div>
+
+  <div class="hilos-grid">
+    <div class="hilo-card" style="cursor: pointer;" (click)="irAUsuarios()">
+      <div class="hilo-card-top"><span class="badge badge-abierto">Gestión</span></div>
+      <h3 class="hilo-titulo">👥 Usuarios</h3>
+      <p class="hilo-contenido">Crea, edita, elimina y visualiza todos los usuarios registrados en el sistema.</p>
+    </div>
+
+    <div class="hilo-card" style="cursor: pointer;" (click)="irADenuncias()">
+      <div class="hilo-card-top"><span class="badge badge-fijado">Alertas</span></div>
+      <h3 class="hilo-titulo">🚨 Denuncias</h3>
+      <p class="hilo-contenido">Revisa las denuncias de ciberacoso y cambia sus estados de revisión.</p>
+    </div>
+
+    <div class="hilo-card" style="cursor: pointer;" (click)="irAHilos()">
+      <div class="hilo-card-top"><span class="badge badge-abierto">Comunidad</span></div>
+      <h3 class="hilo-titulo">💬 Hilos del Foro</h3>
+      <p class="hilo-contenido">Modera las conversaciones del foro, elimina o edita hilos inapropiados.</p>
+    </div>
+  </div>
+</div>

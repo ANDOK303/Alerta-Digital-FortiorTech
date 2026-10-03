@@ -15,7 +15,7 @@ export class CalificacionPlataformaController {
 
   obtenerPorId = async (req: Request, res: Response) => {
     try {
-      const id = Number(req.params['id']);
+      const id = Number(req.params.id);
       const item = await this.service.buscarPorId(id);
       if (!item) return res.status(404).json({ mensaje: 'Calificación no encontrada' });
       res.status(200).json(item);
@@ -26,18 +26,18 @@ export class CalificacionPlataformaController {
 
   crear = async (req: Request, res: Response) => {
     try {
-      const insertId = await this.service.crear(req.body);
-      res.status(201).json({ mensaje: 'Calificación registrada', id: insertId });
+      const id = await this.service.crear(req.body);
+      res.status(201).json({ mensaje: 'Calificación creada', id_calificacion: id, ...req.body });
     } catch (error) {
-      res.status(500).json({ error: 'Error al registrar calificación' });
+      res.status(500).json({ error: 'Error al crear la calificación' });
     }
   };
 
   actualizar = async (req: Request, res: Response) => {
     try {
-      const id = Number(req.params['id']);
-      const exito = await this.service.actualizar(id, req.body);
-      if (!exito) return res.status(404).json({ mensaje: 'Calificación no encontrada' });
+      const id = Number(req.params.id);
+      const actualizado = await this.service.actualizar(id, req.body);
+      if (!actualizado) return res.status(404).json({ mensaje: 'Calificación no encontrada' });
       res.status(200).json({ mensaje: 'Calificación actualizada' });
     } catch (error) {
       res.status(500).json({ error: 'Error al actualizar la calificación' });
@@ -46,9 +46,9 @@ export class CalificacionPlataformaController {
 
   eliminar = async (req: Request, res: Response) => {
     try {
-      const id = Number(req.params['id']);
-      const exito = await this.service.eliminar(id);
-      if (!exito) return res.status(404).json({ mensaje: 'Calificación no encontrada' });
+      const id = Number(req.params.id);
+      const eliminado = await this.service.eliminar(id);
+      if (!eliminado) return res.status(404).json({ mensaje: 'Calificación no encontrada' });
       res.status(200).json({ mensaje: 'Calificación eliminada' });
     } catch (error) {
       res.status(500).json({ error: 'Error al eliminar la calificación' });

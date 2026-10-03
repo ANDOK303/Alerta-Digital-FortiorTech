@@ -11,10 +11,42 @@
     </div>
   </div>
 
+  <!-- Tabla -->
+  <div class="card tabla-card">
+    <div class="tabla-card-header">
+      <h3>Pruebas registradas</h3>
+    </div>
+    <div class="tabla-wrap">
+      <table class="tabla-datos">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>ID Denuncia</th>
+            <th>Archivo</th>
+            <th>Tipo</th>
+            <th>Tamaño (bytes)</th>
+            <th>Descripción</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let p of pruebas">
+            <td>{{ p.id_prueba }}</td>
+            <td>{{ p.id_denuncia }}</td>
+            <td>{{ p.url_archivo }}</td>
+            <td>{{ p.tipo_archivo }}</td>
+            <td>{{ p.tamano_bytes }}</td>
+            <td>{{ p.descripcion_evidencia }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
   <!-- Formulario -->
   <div class="card form-card">
     <div class="form-card-header">
       <span class="form-card-icono">🗂️</span>
+
       <div>
         <h3>Nueva evidencia</h3>
         <p class="form-card-subtitulo">Selecciona el archivo y describe brevemente qué demuestra</p>
@@ -24,24 +56,25 @@
     <form class="form-vista">
       <div class="form-grid">
 
-        <!-- Campo para seleccionar/ingresar el ID de Denuncia -->
+        <!-- Campo corregido y unificado -->
         <div class="form-field-wrap form-field-full">
           <label class="form-label" for="id_denuncia">Número / ID de la Denuncia</label>
-          <input class="form-field" id="id_denuncia" name="id_denuncia" type="number" min="1"
-                 placeholder="Ej. 1" [(ngModel)]="id_denuncia">
+          <input class="form-field" id="id_denuncia" name="idDenuncia" type="number" min="1"
+                 placeholder="Ej. 1" [(ngModel)]="idDenuncia">
           <span class="form-hint">Ingresa el código correlativo de la denuncia a la que pertenece esta evidencia.</span>
         </div>
 
         <div class="form-field-wrap form-field-full">
           <label class="form-label" for="archivo">Archivo</label>
-          <input class="form-file" id="archivo" name="archivo" type="file" (change)="onArchivoSeleccionado($event)">
+          <input class="form-file" id="archivo" name="archivo" type="file" (change)="seleccionarArchivo($event)">
           <span class="form-hint">Puedes adjuntar capturas de pantalla, imágenes o documentos.</span>
         </div>
 
         <div class="form-field-wrap form-field-full">
           <label class="form-label" for="descripcion">Descripción de la evidencia</label>
           <textarea class="form-field" id="descripcion" name="descripcion" rows="3"
-                    placeholder="Ej. Captura del mensaje recibido el 12 de septiembre" [(ngModel)]="descripcion_evidencia"></textarea>
+                    [(ngModel)]="descripcion"
+                    placeholder="Ej. Captura del mensaje recibido el 12 de septiembre"></textarea>
         </div>
 
       </div>

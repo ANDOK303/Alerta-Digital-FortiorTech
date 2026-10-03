@@ -11,6 +11,33 @@
     </div>
   </div>
 
+  <!-- Tabla -->
+  <div class="card tabla-card">
+    <div class="tabla-card-header">
+      <h3>Publicaciones</h3>
+    </div>
+    <div class="tabla-wrap">
+      <table class="tabla-datos">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>ID Hilo</th>
+            <th>Alias</th>
+            <th>Mensaje</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let p of publicaciones">
+            <td>{{ p.id_publicacion }}</td>
+            <td>{{ p.id_hilo }}</td>
+            <td>{{ p.alias_anonimo }}</td>
+            <td>{{ p.mensaje }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
   <!-- Formulario -->
   <div class="card form-card">
     <div class="form-card-header">
@@ -26,15 +53,20 @@
 
         <div class="form-field-wrap form-field-full">
           <label class="form-label" for="alias">Alias</label>
-          <input class="form-field" id="alias" name="alias" type="text"
-                 placeholder="Ej. UsuarioAnonimo25" [(ngModel)]="alias">
+          <input class="form-field" id="alias" name="alias" type="text" #alias
+                 placeholder="Ej. UsuarioAnonimo25">
           <span class="form-hint">Si lo dejas en blanco, tu mensaje se publicará como Anónimo.</span>
         </div>
 
         <div class="form-field-wrap form-field-full">
+          <label class="form-label" for="idHilo">ID Hilo</label>
+          <input class="form-field" id="idHilo" name="idHilo" type="number" #idHilo>
+        </div>
+
+        <div class="form-field-wrap form-field-full">
           <label class="form-label" for="mensaje">Mensaje</label>
-          <textarea class="form-field" id="mensaje" name="mensaje" rows="4"
-                    placeholder="Escribe tu mensaje aquí..." [(ngModel)]="mensaje"></textarea>
+          <textarea class="form-field" id="mensaje" name="mensaje" rows="4" #mensaje
+                    placeholder="Escribe tu mensaje aquí..."></textarea>
         </div>
 
         <div class="form-field-wrap form-field-full">
@@ -46,7 +78,10 @@
       </div>
 
       <div class="form-footer">
-        <button type="button" class="btn btn-primary form-submit" (click)="publicarMensaje()">Enviar publicación</button>
+        <button type="button" class="btn btn-primary form-submit"
+                (click)="publicarMensaje(alias.value, idHilo.value, mensaje.value)">
+          Enviar publicación
+        </button>
       </div>
     </form>
   </div>

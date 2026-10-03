@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { Component, OnInit, Inject, PLATFORM_ID, ChangeDetectorRef } from '@angular/core';
+import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 
@@ -10,52 +10,72 @@ import { HttpClient } from '@angular/common/http';
   templateUrl: './pruebas-denuncia.html',
   styleUrls: ['./pruebas-denuncia.css']
 })
-export class PruebasDenuncia {
-  private apiUrl = 'http://localhost:3000/api/pruebas';
+export class PruebasDenuncia implements OnInit {
+  esAdmin = false;
+  pruebas: any[] = [];
+  idDenuncia: string = '';
+  descripcion: string = '';
+  archivoSeleccionado: File | null = null;
 
-  id_denuncia: number = 1;
-  descripcion_evidencia: string = '';
+  constructor(
+    @Inject(PLATFORM_ID) private platformId: Object,
+    private http: HttpClient,
+    private cdr: ChangeDetectorRef
+  ) {}
 
-  // Datos del archivo
-  url_archivo: string = '';
-  tipo_archivo: string = 'image/png';
-  tamano_bytes: number = 0;
+  ngOnInit() {
+    if (isPlatformBrowser(this.platformId)) {
+      const usuarioGuardado = localStorage.getItem('usuario');
+      if (usuarioGuardado) {
+        const usuario = JSON.parse(usuarioGuardado);
+        this.esAdmin = usuario.rol === 'administrador';
+      }
+    }
 
-  constructor(private http: HttpClient) {}
-
-  onArchivoSeleccionado(event: any): void {
-    const file = event.target.files[0];
-    if (file) {
-      this.url_archivo = file.name;
-      this.tipo_archivo = file.type || 'application/octet-stream';
-      this.tamano_bytes = file.size;
+    if (this.esAdmin) {
+      this.cargarPruebas();
     }
   }
 
-  subirPrueba(): void {
-    if (!this.url_archivo) {
-      alert('Por favor selecciona un archivo de evidencia.');
+  cargarPruebas() {
+    this.http.get<any[]>('http://localhost:3000/api/pruebas-denuncia').subscribe({
+      next: (data) => {
+        this.pruebas = data;
+        this.cdr.detectChanges();
+      },
+      error: (error) => console.error('Error al cargar pruebas', error)
+    });
+  }
+
+  seleccionarArchivo(event: Event) {
+    const input = event.target as HTMLInputElement;
+    this.archivoSeleccionado = input.files?.[0] || null;
+  }
+
+  subirPrueba() {
+    if (!this.idDenuncia || !this.archivoSeleccionado) {
       return;
     }
 
-    const payload = {
-      id_denuncia: Number(this.id_denuncia),
-      url_archivo: this.url_archivo,
-      tipo_archivo: this.tipo_archivo,
-      tamano_bytes: this.tamano_bytes,
-      descripcion_evidencia: this.descripcion_evidencia
+    const nuevaPrueba = {
+      id_denuncia: Number(this.idDenuncia),
+      url_archivo: this.archivoSeleccionado.name,
+      tipo_archivo: this.archivoSeleccionado.type,
+      tamano_bytes: this.archivoSeleccionado.size,
+      descripcion_evidencia: this.descripcion
     };
 
-    this.http.post(this.apiUrl, payload).subscribe({
-      next: () => {
-        alert('¡Prueba de denuncia registrada con éxito!');
-        this.descripcion_evidencia = '';
-        this.url_archivo = '';
+    this.http.post<any>('http://localhost:3000/api/pruebas-denuncia', nuevaPrueba).subscribe({
+      next: (respuesta) => {
+        if (this.esAdmin) {
+          this.pruebas.push(respuesta);
+        }
+        this.idDenuncia = '';
+        this.descripcion = '';
+        this.archivoSeleccionado = null;
+        this.cdr.detectChanges();
       },
-      error: (err) => {
-        console.error('Error al subir prueba:', err);
-        alert('Ocurrió un error al registrar la evidencia en MySQL.');
-      }
+      error: (error) => console.error('Error al subir prueba', error)
     });
   }
 }

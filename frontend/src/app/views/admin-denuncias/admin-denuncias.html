@@ -1,0 +1,93 @@
+<div class="vista-admin">
+
+  <div style="margin-bottom: 20px; display: flex; align-items: center; justify-content: space-between;">
+    <button type="button" class="btn-cancel" (click)="volverAlHomeAdmin()" style="display: flex; align-items: center; gap: 8px;">
+      <span>⬅️</span> Volver al Panel Principal
+    </button>
+    <h2 style="color: #1a365d; margin: 0;">Gestión de Denuncias</h2>
+  </div>
+
+  <div class="form-card">
+    <h3>{{ modoEdicion ? 'Editar Denuncia #' + denunciaActual.id_denuncia : 'Registrar Nueva Denuncia (Manual)' }}</h3>
+    
+    <form (ngSubmit)="guardarDenuncia()" #denunciaForm="ngForm">
+      <div class="form-grid">
+        <div class="form-group">
+          <label>TÍTULO DEL CASO</label>
+          <input type="text" [(ngModel)]="denunciaActual.titulo_caso" name="titulo_caso" required placeholder="Ej. Acoso en redes" />
+        </div>
+
+        <div class="form-group">
+          <label>TIPO DE CIBERACOSO</label>
+          <input type="text" [(ngModel)]="denunciaActual.tipo_ciberacoso" name="tipo_ciberacoso" required placeholder="Ej. Doxxing" />
+        </div>
+
+        <div class="form-group">
+          <label>NIVEL DE PRIORIDAD</label>
+          <select [(ngModel)]="denunciaActual.nivel_prioridad" name="nivel_prioridad">
+            <option value="Alta">Alta</option>
+            <option value="Media">Media</option>
+            <option value="Baja">Baja</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>ESTADO DE RESOLUCIÓN</label>
+          <select [(ngModel)]="denunciaActual.estado_resolucion" name="estado_resolucion">
+            <option value="Pendiente">Pendiente</option>
+            <option value="En Proceso">En Proceso</option>
+            <option value="Resuelto">Resuelto</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-group full-width" style="margin-top: 15px;">
+        <label>DESCRIPCIÓN DETALLADA</label>
+        <textarea [(ngModel)]="denunciaActual.descripcion_detallada" name="descripcion_detallada" rows="3" required></textarea>
+      </div>
+
+      <div class="form-actions" style="margin-top: 15px; display: flex; gap: 10px;">
+  <button type="submit" class="btn-submit">
+    {{ modoEdicion ? 'Actualizar Caso' : 'Registrar Caso' }}
+  </button>
+  <button type="button" class="btn-cancel" *ngIf="modoEdicion" (click)="cancelar()">
+    Cancelar Edición
+  </button>
+</div>
+    </form>
+  </div>
+
+  <div class="table-card" style="margin-top: 30px;">
+    <h3>Registro Histórico de Denuncias</h3>
+    <table class="tabla-datos" style="width: 100%; border-collapse: collapse; margin-top: 15px;">
+      <thead>
+        <tr style="border-bottom: 2px solid #e2e8f0; text-align: left;">
+          <th style="padding: 10px;">ID</th>
+          <th style="padding: 10px;">Usuario</th>
+          <th style="padding: 10px;">Título del Caso</th>
+          <th style="padding: 10px;">Tipo</th>
+          <th style="padding: 10px;">Prioridad</th>
+          <th style="padding: 10px;">Estado</th>
+          <th style="padding: 10px; text-align: center;">Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let d of denuncias" style="border-bottom: 1px solid #edf2f7;">
+          <td style="padding: 10px;">#{{ d.id_denuncia }}</td>
+          <td style="padding: 10px;">Anónimo / Sistema</td>
+          <td style="padding: 10px;">{{ d.titulo_caso || 'Sin título' }}</td>
+          <td style="padding: 10px;">{{ d.tipo_ciberacoso }}</td>
+          <td style="padding: 10px; text-transform: uppercase;">{{ d.nivel_prioridad }}</td>
+          <td style="padding: 10px;">{{ d.estado_resolucion || 'Pendiente' }}</td>
+          <td style="padding: 10px; text-align: center; display: flex; gap: 5px; justify-content: center;">
+            <button type="button" class="btn-accion edit" (click)="editarDenuncia(d)" title="Editar">✏️</button>
+            <button type="button" class="btn-accion delete" (click)="eliminarDenuncia(d.id_denuncia)" title="Eliminar">🗑️</button>
+          </td>
+        </tr>
+        <tr *ngIf="denuncias.length === 0">
+          <td colspan="7" style="text-align: center; padding: 20px; color: #718096;">No hay denuncias registradas.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

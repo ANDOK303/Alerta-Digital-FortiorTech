@@ -1,56 +1,62 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-publicaciones-foro',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule],
   templateUrl: './publicaciones-foro.html',
   styleUrls: ['./publicaciones-foro.css']
 })
-export class PublicacionesForo {
-  private apiUrl = 'http://localhost:3000/api/publicaciones';
+export class PublicacionesForo implements OnInit {
+  publicaciones: any[] = [];
+  archivoSeleccionado: File | null = null; // <-- Propiedad agregada
 
-  alias: string = '';
-  mensaje: string = '';
-  url_imagen_adjunta: string | null = null;
+  constructor(
+    private http: HttpClient,
+    private router: Router,
+    private cdr: ChangeDetectorRef
+  ) {}
 
-  constructor(private http: HttpClient) {}
-
-  onArchivoSeleccionado(event: any): void {
-    const file = event.target.files[0];
-    if (file) {
-      this.url_imagen_adjunta = file.name;
-    }
+  ngOnInit() {
+    this.cargarPublicaciones();
   }
 
-  publicarMensaje(): void {
-    if (!this.mensaje.trim()) {
-      alert('Por favor escribe un mensaje para publicar.');
+  cargarPublicaciones() {
+    this.http.get<any[]>('http://localhost:3000/api/publicaciones-foro').subscribe({
+      next: (data) => {
+        this.publicaciones = data;
+        this.cdr.detectChanges();
+      },
+      error: (error) => console.error('Error al cargar publicaciones', error)
+    });
+  }
+
+  // <-- Función agregada para solucionar el error de compilación
+  onArchivoSeleccionado(event: Event) {
+    const input = event.target as HTMLInputElement;
+    this.archivoSeleccionado = input.files?.[0] || null;
+  }
+
+  publicarMensaje(alias: string, idHilo: string, mensaje: string) {
+    if (!idHilo.trim() || !mensaje.trim()) {
       return;
     }
 
-    const payload = {
-      id_hilo: 1,
-      id_usuario: null,
-      alias_anonimo: this.alias.trim() || 'Anónimo',
-      mensaje: this.mensaje,
-      url_imagen_adjunta: this.url_imagen_adjunta
+    const nuevaPublicacion = {
+      id_hilo: Number(idHilo),
+      alias_anonimo: alias || 'Anónimo',
+      mensaje
     };
 
-    this.http.post(this.apiUrl, payload).subscribe({
-      next: () => {
-        alert('¡Publicación enviada correctamente al foro!');
-        this.alias = '';
-        this.mensaje = '';
-        this.url_imagen_adjunta = null;
+    this.http.post<any>('http://localhost:3000/api/publicaciones-foro', nuevaPublicacion).subscribe({
+      next: (respuesta) => {
+        this.publicaciones.push(respuesta);
+        this.cdr.detectChanges();
       },
-      error: (err) => {
-        console.error('Error al publicar:', err);
-        alert('Ocurrió un error al guardar la publicación.');
-      }
+      error: (error) => console.error('Error al publicar', error)
     });
   }
 }

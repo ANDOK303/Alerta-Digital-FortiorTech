@@ -1,0 +1,99 @@
+<div class="contenedor vista-admin">
+  
+  <div class="vista-header">
+    <div class="vista-header-titulo">
+      <span class="vista-icono">👥</span>
+      <div>
+        <h2>Gestión de Usuarios</h2>
+        <p class="vista-subtitulo">Administra los accesos y cuentas del sistema</p>
+      </div>
+    </div>
+    <!-- Botón para regresar al home del admin -->
+    <button type="button" class="btn btn-secondary form-cancel" routerLink="/admin-home">
+      ← Volver al Panel
+    </button>
+  </div>
+
+  <!-- Formulario -->
+  <div class="card form-card">
+    <div class="form-card-header">
+      <span class="form-card-icono">{{ modoEdicion ? '✏️' : '📝' }}</span>
+      <div>
+        <h3>{{ modoEdicion ? 'Editar Usuario' : 'Nuevo Usuario' }}</h3>
+      </div>
+    </div>
+    
+    <form class="form-vista" (ngSubmit)="guardarUsuario()">
+      <div class="form-grid">
+        <div class="form-field-wrap">
+          <label class="form-label">Nombre Completo</label>
+          <input class="form-field" type="text" [(ngModel)]="usuarioActual.nombre" name="nombre" placeholder="Ej. Ana Gómez" required>
+        </div>
+        
+        <div class="form-field-wrap">
+          <label class="form-label">Correo Electrónico</label>
+          <input class="form-field" type="email" [(ngModel)]="usuarioActual.correo_electronico" name="correo_electronico" placeholder="correo@ejemplo.com" required>
+        </div>
+        
+        <div class="form-field-wrap">
+          <label class="form-label">Rol del Sistema</label>
+          <select class="form-field" [(ngModel)]="usuarioActual.rol" name="rol">
+            <option value="usuario">Usuario Estándar</option>
+            <option value="admin">Administrador</option>
+          </select>
+        </div>
+
+        <div class="form-field-wrap" *ngIf="!modoEdicion">
+          <label class="form-label">Contraseña</label>
+          <input class="form-field" type="password" [(ngModel)]="usuarioActual.contrasena" name="contrasena" placeholder="Contraseña segura">
+        </div>
+      </div>
+      
+      <div class="form-footer">
+        <button type="button" class="btn btn-secondary form-cancel" *ngIf="modoEdicion" (click)="cancelar()">Cancelar</button>
+        <button type="submit" class="btn btn-primary form-submit">{{ modoEdicion ? 'Actualizar' : 'Guardar' }}</button>
+      </div>
+    </form>
+  </div>
+
+  <!-- Tabla -->
+  <div class="card tabla-card">
+    <div class="tabla-card-header">
+      <h3>Usuarios Registrados</h3>
+    </div>
+    <div class="tabla-wrap" style="overflow-x: auto;">
+      <table class="tabla-datos" style="width: 100%; border-collapse: collapse;">
+        <thead>
+          <tr style="background: #F3F6FC; text-align: left;">
+            <th style="padding: 12px; border-bottom: 2px solid #ddd;">ID</th>
+            <th style="padding: 12px; border-bottom: 2px solid #ddd;">Nombre</th>
+            <th style="padding: 12px; border-bottom: 2px solid #ddd;">Correo</th>
+            <th style="padding: 12px; border-bottom: 2px solid #ddd;">Rol</th>
+            <th style="padding: 12px; border-bottom: 2px solid #ddd;">Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let u of usuarios" style="border-bottom: 1px solid #ddd;">
+            <!-- CORREGIDO: u.id_usuario en vez de u.id -->
+            <td style="padding: 12px;">{{ u.id_usuario }}</td>
+            <td style="padding: 12px;">{{ u.nombre }}</td>
+            <td style="padding: 12px;">{{ u.correo_electronico }}</td>
+            <td style="padding: 12px;">
+              <span class="badge" [ngClass]="u.rol === 'admin' ? 'badge-fijado' : 'badge-abierto'">{{ u.rol }}</span>
+            </td>
+            <td style="padding: 12px;">
+              <button type="button" style="margin-right: 5px; cursor:pointer;" (click)="editarUsuario(u)">✏️ Editar</button>
+              <!-- CORREGIDO: u.id_usuario en vez de u.id -->
+              <button type="button" style="cursor:pointer;" (click)="eliminarUsuario(u.id_usuario)">🗑️ Eliminar</button>
+            </td>
+          </tr>
+          
+          <!-- Mensaje cuando no hay datos -->
+          <tr *ngIf="usuarios.length === 0">
+            <td colspan="5" style="text-align: center; padding: 20px;">Cargando usuarios o no hay registros...</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
